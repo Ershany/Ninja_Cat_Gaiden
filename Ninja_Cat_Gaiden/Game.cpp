@@ -4,6 +4,9 @@ Game::Game(int width, int height)
 	: window(sf::VideoMode(width, height), "Ninja Cat Gaiden")
 {
 	window.setFramerateLimit(60);
+
+	// Temp Testing
+	tilemap = new Tilemap("Resources/Levels/test.png", textureManager, window);
 }
 
 Game::~Game() {
@@ -35,13 +38,13 @@ void Game::inputs() {
 }
 
 void Game::update(sf::Time &deltaTime) {
-
+	tilemap->update(deltaTime);
 }
 
 void Game::render() {
 	window.clear();
 
-
-
+	tilemap->render();
+	
 	window.display();
 }

@@ -5,17 +5,22 @@
 
 #include "Updateable.h"
 #include "Tile.h"
+#include "TextureManager.h"
 
 class Tilemap : public Updateable {
 public:
-	Tilemap();
+	Tilemap(std::string levelPath, TextureManager &textureManager, sf::RenderWindow &window);
 	~Tilemap();
 
 	void update(sf::Time deltaTime);
+	void render();
 private:
-	void load();
+	void load(std::string levelPath);
 
+	TextureManager &textureManager;
+	sf::RenderWindow &window;
 	Tile** tiles;
+	sf::Vector2u mapSize;
 };
 
 #endif

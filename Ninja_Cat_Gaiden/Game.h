@@ -3,6 +3,8 @@
 
 #include <SFML\Graphics.hpp>
 
+#include "Tilemap.h"
+
 class Game {
 public:
 	Game(int width, int height);
@@ -15,6 +17,9 @@ public:
 private:
 	sf::RenderWindow window;
 	sf::Clock clock;
+
+	TextureManager textureManager;
+	Tilemap *tilemap;
 };
 
 #endif

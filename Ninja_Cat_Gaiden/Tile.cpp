@@ -3,9 +3,14 @@
 int Tile::width = 32;
 int Tile::height = 32;
 
-Tile::Tile(int x, int y, bool solid, bool projectileSolid) {
-	this->x = x;
-	this->y = y;
+Tile::Tile() {
+	this->position = sf::Vector2f(0.0f, 0.0f);
+	this->solid = false;
+	this->projectileSolid = false;
+}
+
+Tile::Tile(sf::Vector2f position, bool solid, bool projectileSolid) {
+	this->position = position;
 	this->solid = solid;
 	this->projectileSolid = projectileSolid;
 }
@@ -15,7 +20,15 @@ Tile::~Tile() {
 }
 
 void Tile::update(sf::Time deltaTime) {
+	this->sprite.setPosition(position.x, position.y);
+}
 
+void Tile::setPosition(sf::Vector2f position) {
+	this->position = position;
+}
+
+sf::Vector2f Tile::getPosition() const {
+	return position;
 }
 
 void Tile::setSolid(bool choice) {
