@@ -4,6 +4,9 @@
 #include <SFML\Graphics.hpp>
 
 #include "Tilemap.h"
+#include "TextureManager.h"
+#include "Player.h"
+#include "Camera.h"
 
 class Game {
 public:
@@ -20,6 +23,8 @@ private:
 
 	TextureManager textureManager;
 	Tilemap *tilemap;
+	Player *player;
+	Camera *camera;
 };
 
 #endif

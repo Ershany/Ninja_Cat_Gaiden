@@ -13,7 +13,14 @@ public:
 	~Tilemap();
 
 	void update(sf::Time deltaTime);
-	void render();
+	void render(sf::Vector2f renderPosition);
+
+	void addOffset(sf::Vector2f &offset);
+	void addOffset(int xOffset, int yOffset);
+	void setOffset(sf::Vector2f &offset);
+	void setOffset(int xOffset, int yOffset);
+
+	sf::Vector2f getOffset();
 private:
 	void load(std::string levelPath);
 
@@ -21,6 +28,7 @@ private:
 	sf::RenderWindow &window;
 	Tile** tiles;
 	sf::Vector2u mapSize;
+	sf::Vector2f mapOffset;
 };
 
 #endif

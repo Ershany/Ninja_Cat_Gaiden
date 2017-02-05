@@ -12,7 +12,7 @@ public:
 	static int height;
 
 	Tile();
-	Tile(sf::Vector2f position, bool solid = false, bool projectileSolid = false);
+	Tile(sf::Vector2f &position, bool solid = false, bool projectileSolid = false);
 	~Tile();
 
 	void update(sf::Time deltaTime);

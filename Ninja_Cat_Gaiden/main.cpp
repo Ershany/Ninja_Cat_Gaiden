@@ -2,7 +2,9 @@
 #include "Game.h"
 
 int main() {
-	Game game(800, 600);
+	int width = 1200;
+	int height = width / 16 * 9;
+	Game game(width, height);
 	game.launch();
 
 	return 0;

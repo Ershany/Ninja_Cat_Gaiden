@@ -9,7 +9,7 @@ Tile::Tile() {
 	this->projectileSolid = false;
 }
 
-Tile::Tile(sf::Vector2f position, bool solid, bool projectileSolid) {
+Tile::Tile(sf::Vector2f &position, bool solid, bool projectileSolid) {
 	this->position = position;
 	this->solid = solid;
 	this->projectileSolid = projectileSolid;
