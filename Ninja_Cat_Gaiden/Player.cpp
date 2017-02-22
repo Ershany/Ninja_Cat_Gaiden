@@ -4,15 +4,15 @@ Player::Player(sf::Vector2f &pos, Tilemap &map)
 	: tilemap(map)
 {
 	this->position = pos;
-	this->size.x = 32;
-	this->size.y = 48;
+	this->size.x = 56;
+	this->size.y = 68;
 }
 
 Player::~Player() {
 
 }
 
-void Player::update(sf::Time deltaTime) {
+void Player::update(const sf::Time &deltaTime) {
 	position.x += deltaTime.asSeconds() * 50.5f;
 	position.y += deltaTime.asSeconds() * 50.5f;
 

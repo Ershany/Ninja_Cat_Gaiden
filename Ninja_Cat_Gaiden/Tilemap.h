@@ -12,8 +12,8 @@ public:
 	Tilemap(std::string levelPath, TextureManager &textureManager, sf::RenderWindow &window);
 	~Tilemap();
 
-	void update(sf::Time deltaTime);
-	void render(sf::Vector2f renderPosition);
+	void update(const sf::Time &deltaTime);
+	void render(const sf::Vector2f &renderPosition);
 
 	void addOffset(sf::Vector2f &offset);
 	void addOffset(int xOffset, int yOffset);

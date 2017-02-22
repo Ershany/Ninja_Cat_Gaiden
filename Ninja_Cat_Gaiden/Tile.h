@@ -15,18 +15,21 @@ public:
 	Tile(sf::Vector2f &position, bool solid = false, bool projectileSolid = false);
 	~Tile();
 
-	void update(sf::Time deltaTime);
+	void update(const sf::Time &deltaTime);
 
-	void setPosition(sf::Vector2f position);
-
+	void setPosition(sf::Vector2f &position);
 	void setSolid(bool choice);
 	void setProjectileSolid(bool choice);
+	void setTransparent(bool choice);
+
 	bool getSolid() const;
 	bool getProjecitleSolid() const;
+	bool getTransparent() const;
 	sf::Vector2f getPosition() const;
 private:
 	bool solid;
 	bool projectileSolid;
+	bool transparent;
 };
 
 #endif

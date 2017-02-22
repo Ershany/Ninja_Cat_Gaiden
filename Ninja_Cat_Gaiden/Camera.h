@@ -12,7 +12,7 @@ public:
 	Camera(Player &player, Tilemap &tilemap, sf::RenderWindow &window);
 	~Camera();
 
-	void update(sf::Time deltaTime);
+	void update(const sf::Time &deltaTime);
 	void render();
 private:
 	sf::RenderWindow &window;

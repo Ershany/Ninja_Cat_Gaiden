@@ -12,7 +12,7 @@ Tilemap::~Tilemap() {
 
 }
 
-void Tilemap::update(sf::Time deltaTime) {
+void Tilemap::update(const sf::Time &deltaTime) {
 	// Set the tiles positions accordingly
 	for (int row = 0; row < mapSize.y; ++row) {
 		for (int col = 0; col < mapSize.x; ++col) {
@@ -21,7 +21,7 @@ void Tilemap::update(sf::Time deltaTime) {
 	}
 }
 
-void Tilemap::render(sf::Vector2f renderPosition) {
+void Tilemap::render(const sf::Vector2f &renderPosition) {
 	// Calculate which tiles to render in the 2d array (bounds)
 	int startRow = ((int)renderPosition.y >> 5) - 2;
 	if (startRow < 0) startRow = 0;
@@ -36,6 +36,9 @@ void Tilemap::render(sf::Vector2f renderPosition) {
 	// Render the tiles using the calculated bounds
 	for (int row = startRow; row < endRow; ++row) {
 		for (int col = startCol; col < endCol; ++col) {
+			// If the tile is transparent, don't draw it
+			if (tiles[row][col].getTransparent()) continue;
+
 			// Transform the tiles with offset
 			tiles[row][col].sprite.move(-mapOffset);
 			window.draw(tiles[row][col].sprite);
@@ -58,11 +61,19 @@ void Tilemap::load(std::string levelPath) {
 		for (int col = 0; col < imageSize.x; ++col) {
 			sf::Color color = image.getPixel(col, row);
 			
+			// Set the default transparency to false
+			tiles[row][col].setTransparent(false);
 			if (color.r == 0 && color.g == 255 && color.b == 0) {
 				tiles[row][col].sprite.setTexture(textureManager.getTexture("Resources/Tiles/grass.png"));
 			}
 			else if (color.r == 86 && color.g == 86 && color.b == 86) {
 				tiles[row][col].sprite.setTexture(textureManager.getTexture("Resources/Tiles/stone.png"));
+			}
+			else if (color.r == 255 && color.g == 153 && color.b == 0) {
+				tiles[row][col].sprite.setTexture(textureManager.getTexture("Resources/Tiles/sand.png"));
+			}
+			else if (color.r == 0 && color.g == 0 && color.b == 0) {
+				tiles[row][col].setTransparent(true);
 			}
 			else {
 				

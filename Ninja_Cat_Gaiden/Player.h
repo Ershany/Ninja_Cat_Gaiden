@@ -12,7 +12,7 @@ public:
 	Player(sf::Vector2f &position, Tilemap &map);
 	~Player();
 
-	void update(sf::Time deltaTime);
+	void update(const sf::Time &deltaTime);
 
 	sf::Vector2u getSize();
 private:

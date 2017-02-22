@@ -3,6 +3,7 @@
 
 #include <SFML\Graphics.hpp>
 
+#include "InputManager.h"
 #include "Tilemap.h"
 #include "TextureManager.h"
 #include "Player.h"
@@ -21,10 +22,10 @@ private:
 	sf::RenderWindow window;
 	sf::Clock clock;
 
+	InputManager *inputManager;
+	GamestateManager gsm;
 	TextureManager textureManager;
-	Tilemap *tilemap;
 	Player *player;
-	Camera *camera;
 };
 
 #endif

@@ -10,7 +10,7 @@ Camera::~Camera() {
 
 }
 
-void Camera::update(sf::Time deltaTime) {
+void Camera::update(const sf::Time &deltaTime) {
 	// Set the offset so that the player is in the center of the screen
 	tilemap.setOffset(player.position - sf::Vector2f((window.getSize().x >> 1) - (player.getSize().x >> 1), (window.getSize().y >> 1) - (player.getSize().y >> 1)));
 }

@@ -5,7 +5,7 @@
 
 class Updateable {
 public:
-	virtual void update(sf::Time deltaTime) = 0;
+	virtual void update(const sf::Time &deltaTime) = 0;
 
 	sf::Vector2f position;
 };

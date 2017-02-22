@@ -19,11 +19,11 @@ Tile::~Tile() {
 
 }
 
-void Tile::update(sf::Time deltaTime) {
+void Tile::update(const sf::Time &deltaTime) {
 	this->sprite.setPosition(position.x, position.y);
 }
 
-void Tile::setPosition(sf::Vector2f position) {
+void Tile::setPosition(sf::Vector2f &position) {
 	this->position = position;
 }
 
@@ -39,10 +39,18 @@ void Tile::setProjectileSolid(bool choice) {
 	this->projectileSolid = choice;
 }
 
+void Tile::setTransparent(bool choice) {
+	this->transparent = choice;
+}
+
 bool Tile::getSolid() const {
 	return solid;
 }
 
 bool Tile::getProjecitleSolid() const {
 	return projectileSolid;
+}
+
+bool Tile::getTransparent() const {
+	return transparent;
 }
