@@ -30,3 +30,7 @@ void Gamestate::keyPressed(int keycode) {
 void Gamestate::keyReleased(int keycode) {
 
 }
+
+Tilemap* Gamestate::getTilemap() {
+	return map;
+}

@@ -8,24 +8,22 @@
 #include "TextureManager.h"
 #include "Player.h"
 #include "Camera.h"
+#include "Model.h"
+#include "View.h"
+#include "Controller.h"
 
 class Game {
 public:
-	Game(int width, int height);
+	Game();
 	~Game();
 
 	void launch();
-	void inputs();
-	void update(sf::Time &deltaTime);
-	void render();
 private:
-	sf::RenderWindow window;
+	Model *model;
+	View *view;
+	Controller *controller;
+	
 	sf::Clock clock;
-
-	InputManager *inputManager;
-	GamestateManager gsm;
-	TextureManager textureManager;
-	Player *player;
 };
 
 #endif

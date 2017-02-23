@@ -19,6 +19,7 @@ public:
 	virtual void keyPressed(int keycode);
 	virtual void keyReleased(int keycode);
 
+	Tilemap* getTilemap();
 private:
 	Tilemap *map;
 	TextureManager *textureManager;

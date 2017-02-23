@@ -19,6 +19,8 @@ public:
 
 	void keyPressed(int keycode);
 	void keyReleased(int keycode);
+
+	Gamestate* getCurrentState();
 private:
 	std::stack<Gamestate*> states;
 };
