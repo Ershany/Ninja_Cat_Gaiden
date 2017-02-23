@@ -12,3 +12,7 @@ Model::~Model() {
 void Model::update(sf::Time deltaTime) {
 	gsm.update(deltaTime);
 }
+
+void Model::setGSM(GamestateManager &gsm) {
+	this->gsm = gsm;
+}

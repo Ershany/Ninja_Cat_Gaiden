@@ -10,7 +10,7 @@ public:
 	InputManager(sf::RenderWindow &window, GamestateManager &gsm);
 	~InputManager();
 
-	void update(const sf::Time &deltaTime);
+	void update();
 private:
 	sf::RenderWindow &window;
 	GamestateManager &gsm;

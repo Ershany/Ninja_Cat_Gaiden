@@ -17,6 +17,8 @@ public:
 	void update(const sf::Time &deltaTime);
 
 	sf::Vector2u getSize();
+
+	bool upHeld, downHeld, leftHeld, rightHeld;
 private:
 	sf::Vector2f velocity;
 	sf::Vector2u size;

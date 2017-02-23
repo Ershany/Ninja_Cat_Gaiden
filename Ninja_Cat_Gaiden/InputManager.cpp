@@ -10,11 +10,14 @@ InputManager::~InputManager() {
 
 }
 
-void InputManager::update(const sf::Time &deltaTime) {
+void InputManager::update() {
 	sf::Event event;
 
 	while (window.pollEvent(event)) {
 		switch (event.type) {
+		case sf::Event::Closed:
+			window.close();
+			break;
 		case sf::Event::KeyPressed:
 			gsm.keyPressed(event.key.code);
 			break;

@@ -1,5 +1,7 @@
 #include "Gamestate.h"
 
+#include <iostream>
+
 Gamestate::Gamestate(Tilemap *map, Player *player, Camera *camera, TextureManager *textureManager) {
 	this->map = map;
 	this->player = player;
@@ -20,11 +22,10 @@ void Gamestate::update(const sf::Time &deltaTime) {
 
 void Gamestate::render() {
 	camera->render();
-	//window.draw(player->sprite);
 }
 
 void Gamestate::keyPressed(int keycode) {
-
+	
 }
 
 void Gamestate::keyReleased(int keycode) {

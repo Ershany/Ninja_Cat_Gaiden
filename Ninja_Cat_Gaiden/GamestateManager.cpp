@@ -43,13 +43,25 @@ void GamestateManager::removeGamestate() {
 }
 
 void GamestateManager::keyPressed(int keycode) {
-
+	if (states.empty()) {
+		std::cout << "GamestateManager Stack is Empty: Can't Activate A Keypress" << std::endl;
+		return;
+	}
+	states.top()->keyPressed(keycode);
 }
 
 void GamestateManager::keyReleased(int keycode) {
-
+	if (states.empty()) {
+		std::cout << "GamestateManager Stack is Empty: Can't Activate A Keyrelease" << std::endl;
+		return;
+	}
+	states.top()->keyReleased(keycode);
 }
 
 Gamestate* GamestateManager::getCurrentState() {
+	if (states.empty()) {
+		std::cout << "GamestateManager Stack is Empty: Can't Return Top" << std::endl;
+		return NULL;
+	}
 	return states.top();
 }

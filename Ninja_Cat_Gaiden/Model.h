@@ -10,6 +10,8 @@ public:
 	~Model();
 
 	void update(sf::Time deltaTime);
+	
+	void setGSM(GamestateManager &gsm);
 
 	
 	GamestateManager gsm;

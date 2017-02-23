@@ -13,13 +13,6 @@ Controller::~Controller() {
 }
 
 void Controller::inputs() {
-	// Poll Events
-	sf::Event event;
-	while (view->window.pollEvent(event)) {
-		switch (event.type) {
-		case sf::Event::Closed:
-			view->window.close();
-			break;
-		}
-	}
+	// Update the input manager
+	inputManager->update();
 }

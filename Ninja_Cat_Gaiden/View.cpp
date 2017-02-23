@@ -18,6 +18,8 @@ View::View(Model *model, GamestateManager &gsm)
 	Tilemap *tilemap = new Tilemap("Resources/Levels/test.png", textureManager, window);
 	Camera *camera = new Camera(*(this->model->player), *tilemap, window);
 	this->gsm.addGamestate(new Gamestate(tilemap, model->player, camera, &textureManager));
+	// Set the models gsm to the one we just initialized
+	model->setGSM(gsm);
 }
 
 View::~View() {
