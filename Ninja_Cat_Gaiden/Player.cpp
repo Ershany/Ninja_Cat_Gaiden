@@ -65,7 +65,10 @@ void Player::updateVelocity(const sf::Time &deltaTime) {
 		xChange += 1.0f;
 		facingRight = true;
 	}
-	if (upHeld && canJump) {
+	// Only allow the player to jump if they are able to, and if they are not jumping on the same wall they previously jumped off of
+	if (upHeld && canJump && (lastWallCollision.x != (int)position.x || lastWallCollision.y == (int)position.y)) {
+		lastWallCollision.x = (int)position.x;
+		lastWallCollision.y = (int)position.y;
 		velocity.y = -jumpPower;
 		jumping = true;
 	}

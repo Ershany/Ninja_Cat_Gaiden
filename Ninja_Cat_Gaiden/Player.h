@@ -39,7 +39,7 @@ private:
 	float gravitySpeed, fallRate, currentFallRate;
 	bool jumping, canJump;
 	float jumpPower;
-	sf::Vector2f lastWallCollision;
+	sf::Vector2i lastWallCollision;
 
 	GamestateManager &gsm;
 };
