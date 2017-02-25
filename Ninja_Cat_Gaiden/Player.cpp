@@ -150,10 +150,16 @@ void Player::move(float x, float y) {
 			if (!rightwardsRightHeadCheck->getSolid() && !rightwardsRightHighMiddleCheck->getSolid() && !rightwardsRightFootCheck->getSolid() && !rightwardsRightLowMiddleCheck->getSolid()) {
 				position.x += xChange;
 			}
+			else {
+				velocity.x = 0;
+			}
 		}
 		else if (xChange < 0) { // Left
 			if (!leftwardsLeftHeadCheck->getSolid() && !leftwardsLeftHighMiddleCheck->getSolid() && !leftwardsLeftFootCheck->getSolid() && !leftwardsLeftLowMiddleCheck->getSolid()) {
 				position.x += xChange;
+			}
+			else {
+				velocity.x = 0;
 			}
 		}
 
