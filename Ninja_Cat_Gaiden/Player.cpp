@@ -66,7 +66,7 @@ void Player::updateVelocity(const sf::Time &deltaTime) {
 		facingRight = true;
 	}
 	// Only allow the player to jump if they are able to, and if they are not jumping on the same wall they previously jumped off of
-	if (upHeld && canJump && (lastWallCollision.x != (int)position.x || lastWallCollision.y == (int)position.y)) {
+	if (upHeld && canJump) {
 		lastWallCollision.x = (int)position.x;
 		lastWallCollision.y = (int)position.y;
 		velocity.y = -jumpPower;
@@ -201,13 +201,13 @@ void Player::checkJump() {
 	// The player might be able to grab a wall and jump off of it
 	if (facingRight) {
 		Tile *rightwardsRightHighMiddleCheck = map->getTileByCoordinates(collisionPoints[4] + sf::Vector2f(1.0f, 0.0f));
-		if (rightwardsRightHighMiddleCheck->getSolid()) {
+		if (rightwardsRightHighMiddleCheck->getSolid() && (lastWallCollision.x != (int)position.x || lastWallCollision.y == (int)position.y)) {
 			canJump = true;
 		}
 	}
 	else {
 		Tile *leftwardsLeftHighMiddleCheck = map->getTileByCoordinates(collisionPoints[5] + sf::Vector2f(-1.0f, 0.0f));
-		if (leftwardsLeftHighMiddleCheck->getSolid()) {
+		if (leftwardsLeftHighMiddleCheck->getSolid() && (lastWallCollision.x != (int)position.x || lastWallCollision.y == (int)position.y)) {
 			canJump = true;
 		}
 	}
