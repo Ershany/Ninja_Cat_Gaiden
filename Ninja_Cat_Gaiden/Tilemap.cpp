@@ -68,6 +68,7 @@ void Tilemap::load(std::string levelPath) {
 			}
 			else if (color.r == 86 && color.g == 86 && color.b == 86) {
 				tiles[row][col].sprite.setTexture(textureManager.getTexture("Resources/Tiles/stone.png"));
+				tiles[row][col].setSolid(true);
 			}
 			else if (color.r == 255 && color.g == 153 && color.b == 0) {
 				tiles[row][col].sprite.setTexture(textureManager.getTexture("Resources/Tiles/sand.png"));
@@ -104,4 +105,46 @@ void Tilemap::setOffset(int xOffset, int yOffset) {
 
 sf::Vector2f Tilemap::getOffset() {
 	return mapOffset;
+}
+
+Tile* Tilemap::getTileByIndex(int row, int col) {
+	if (row < 0 || row >= mapSize.y || col < 0 || col >= mapSize.x) {
+		std::cout << "Row/Column Index Is Out Of Bounds: Can't Access" << std::endl;
+		return NULL;
+	}
+	return &(tiles[row][col]);
+}
+
+Tile* Tilemap::getTileByIndex(sf::Vector2f pos) {
+	return getTileByIndex((int)pos.x, (int)pos.y);
+}
+
+// Return true if the tile is out of the map
+bool Tilemap::isSolidByIndex(int row, int col) {
+	Tile* temp = getTileByIndex(row, col);
+	if (temp != NULL) {
+		return temp->getSolid();
+	}
+	return true;
+}
+
+Tile* Tilemap::getTileByCoordinates(int x, int y) {
+	if (y < 0 || y >= mapSize.y << 5 || x < 0 || x >= mapSize.x << 5) {
+		std::cout << "Row/Column Index Is Out Of Bounds: Can't Access" << std::endl;
+		return NULL;
+	}
+	return &(tiles[y >> 5][x >> 5]);
+}
+
+Tile* Tilemap::getTileByCoordinates(sf::Vector2f pos) {
+	return getTileByCoordinates((int)pos.x, (int)pos.y);
+}
+
+// Return true if the tile is out of the map
+bool Tilemap::isSolidByCoordinates(int row, int col) {
+	Tile* temp = getTileByCoordinates(row, col);
+	if (temp != NULL) {
+		return temp->getSolid();
+	}
+	return true;
 }

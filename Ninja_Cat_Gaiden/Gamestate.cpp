@@ -2,9 +2,8 @@
 
 #include <iostream>
 
-Gamestate::Gamestate(Tilemap *map, Player *player, Camera *camera, TextureManager *textureManager) {
+Gamestate::Gamestate(Tilemap *map, Camera *camera, TextureManager *textureManager) {
 	this->map = map;
-	this->player = player;
 	this->camera = camera;
 	this->textureManager = textureManager;
 }
@@ -15,9 +14,7 @@ Gamestate::~Gamestate() {
 
 void Gamestate::update(const sf::Time &deltaTime) {
 	map->update(deltaTime);
-	player->update(deltaTime);
 	camera->update(deltaTime);
-	
 }
 
 void Gamestate::render() {

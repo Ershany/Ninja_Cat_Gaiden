@@ -2,7 +2,7 @@
 
 Model::Model() {
 	// Initialize the opening gamestate
-	player = new Player(sf::Vector2f(0.0f, 0.0f), gsm);
+	player = new Player(sf::Vector2f(48.0f, 48.0f), gsm);
 }
 
 Model::~Model() {

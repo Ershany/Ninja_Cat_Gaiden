@@ -164,6 +164,7 @@
     <ClCompile Include="Gamestate.cpp" />
     <ClCompile Include="GamestateManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Levelstate.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -175,10 +176,12 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="Defs.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Gamestate.h" />
     <ClInclude Include="GamestateManager.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Levelstate.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Renderable.h" />

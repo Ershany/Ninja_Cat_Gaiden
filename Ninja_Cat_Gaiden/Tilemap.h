@@ -20,6 +20,13 @@ public:
 	void setOffset(sf::Vector2f &offset);
 	void setOffset(int xOffset, int yOffset);
 
+	Tile* getTileByIndex(int row, int col);
+	Tile* getTileByIndex(sf::Vector2f pos);
+	bool isSolidByIndex(int row, int col);
+	Tile* getTileByCoordinates(int x, int y);
+	Tile* getTileByCoordinates(sf::Vector2f pos);
+	bool isSolidByCoordinates(int row, int col);
+
 	sf::Vector2f getOffset();
 private:
 	void load(std::string levelPath);

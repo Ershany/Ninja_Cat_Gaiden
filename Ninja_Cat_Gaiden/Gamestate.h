@@ -10,7 +10,7 @@
 
 class Gamestate {
 public:
-	Gamestate(Tilemap *map, Player *player, Camera *camera, TextureManager *textureManager); // Note Gamestate can't have a GamestateManager because that is a circular include
+	Gamestate(Tilemap *map, Camera *camera, TextureManager *textureManager); // Note Gamestate can't have a GamestateManager because that is a circular include
 	virtual ~Gamestate();
 
 	virtual void update(const sf::Time &deltaTime);
@@ -20,10 +20,9 @@ public:
 	virtual void keyReleased(int keycode);
 
 	Tilemap* getTilemap();
-private:
+protected:
 	Tilemap *map;
 	TextureManager *textureManager;
-	Player *player;
 	Camera *camera;
 };
 

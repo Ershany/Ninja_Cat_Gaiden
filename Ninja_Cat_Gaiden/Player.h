@@ -19,9 +19,20 @@ public:
 	sf::Vector2u getSize();
 
 	bool upHeld, downHeld, leftHeld, rightHeld;
+	sf::Vector2f collisionPoints[10]; // Used for collision detection
 private:
+	void updateVelocity(const sf::Time &deltaTime);
+	void updatePosition(const sf::Time &deltaTime);
+	void updateCollisionPoints();
+	void move(float x, float y);
+
+	sf::Vector2f speed;
+	float velocityDrag;
+	float gravitySpeed;
 	sf::Vector2f velocity;
 	sf::Vector2u size;
+	int collisionTune;
+
 	GamestateManager &gsm;
 };
 
