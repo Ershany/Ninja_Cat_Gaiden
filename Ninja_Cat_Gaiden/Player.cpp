@@ -8,11 +8,14 @@
 Player::Player(sf::Vector2f &pos, GamestateManager &gsm) 
 	: gsm(gsm)
 {
+	// Non-Tweakable Variables
 	this->position = pos;
 	this->size.x = 56;
 	this->size.y = 68;
 	this->jumping = false; this->canJump = false;
 	this->currentFallRate = 1.0f; // Don't touch this, keeps track of the falling speed
+	this->lastWallCollision.x = -100; this->lastWallCollision.y = -100;
+	facingRight = true;
 
 	// Tweakable variables
 	this->speed.x = 64.0f; // Horizontal Speed
@@ -54,8 +57,14 @@ void Player::update(const sf::Time &deltaTime) {
 void Player::updateVelocity(const sf::Time &deltaTime) {
 	// Get the horizontal input from the player
 	float xChange = 0.0f;
-	if (leftHeld) xChange -= 1.0f;
-	if (rightHeld) xChange += 1.0f;
+	if (leftHeld) {
+		xChange -= 1.0f;
+		facingRight = false;
+	}
+	if (rightHeld) {
+		xChange += 1.0f;
+		facingRight = true;
+	}
 	if (upHeld && canJump) {
 		velocity.y = -jumpPower;
 		jumping = true;
@@ -151,6 +160,7 @@ void Player::move(float x, float y) {
 				position.x += xChange;
 			}
 			else {
+				// When the player hits the wall when going right, reset horizontal velocity
 				velocity.x = 0;
 			}
 		}
@@ -159,6 +169,7 @@ void Player::move(float x, float y) {
 				position.x += xChange;
 			}
 			else {
+				// When the player hits the wall when going left, reset horizontal velocity
 				velocity.x = 0;
 			}
 		}
@@ -182,6 +193,20 @@ void Player::checkJump() {
 	}
 	else {
 		canJump = false;
+	}
+
+	// The player might be able to grab a wall and jump off of it
+	if (facingRight) {
+		Tile *rightwardsRightHighMiddleCheck = map->getTileByCoordinates(collisionPoints[4] + sf::Vector2f(1.0f, 0.0f));
+		if (rightwardsRightHighMiddleCheck->getSolid()) {
+			canJump = true;
+		}
+	}
+	else {
+		Tile *leftwardsLeftHighMiddleCheck = map->getTileByCoordinates(collisionPoints[5] + sf::Vector2f(-1.0f, 0.0f));
+		if (leftwardsLeftHighMiddleCheck->getSolid()) {
+			canJump = true;
+		}
 	}
 }
 

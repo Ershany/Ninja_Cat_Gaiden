@@ -16,7 +16,7 @@ View::View(Model *model, GamestateManager &gsm)
 	window.setFramerateLimit(60);
 
 	// Setup the sprites
-	model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTest.png"));
+	model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestRight.png"));
 
 	// Setup the first level by making the gamestate manager for the model
 	Tilemap *tilemap = new Tilemap("Resources/Levels/test.png", textureManager, window);
@@ -34,6 +34,14 @@ void View::render() {
 	window.clear();
 
 	gsm.render();
+
+	// Draw the player
+	if (model->player->facingRight) {
+		model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestRight.png"));
+	}
+	else {
+		model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestLeft.png"));
+	}
 	window.draw(model->player->sprite);
 
 #if DEBUG

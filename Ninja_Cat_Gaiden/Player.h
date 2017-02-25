@@ -20,6 +20,7 @@ public:
 	sf::Vector2u getSize();
 
 	bool upHeld, downHeld, leftHeld, rightHeld;
+	bool facingRight;
 	sf::Vector2f collisionPoints[10]; // Used for collision detection
 private:
 	void updateVelocity(const sf::Time &deltaTime);
@@ -29,6 +30,7 @@ private:
 	/* Determines if the player can jump, and sets the boolean "canJump" accordingly*/
 	void checkJump();
 
+
 	sf::Vector2f speed;
 	sf::Vector2f velocity;
 	sf::Vector2u size;
@@ -37,6 +39,7 @@ private:
 	float gravitySpeed, fallRate, currentFallRate;
 	bool jumping, canJump;
 	float jumpPower;
+	sf::Vector2f lastWallCollision;
 
 	GamestateManager &gsm;
 };
