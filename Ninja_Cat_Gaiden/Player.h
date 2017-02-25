@@ -16,6 +16,7 @@ public:
 
 	void update(const sf::Time &deltaTime);
 
+	sf::Vector2f getVelocity();
 	sf::Vector2u getSize();
 
 	bool upHeld, downHeld, leftHeld, rightHeld;
@@ -25,13 +26,17 @@ private:
 	void updatePosition(const sf::Time &deltaTime);
 	void updateCollisionPoints();
 	void move(float x, float y);
+	/* Determines if the player can jump, and sets the boolean "canJump" accordingly*/
+	void checkJump();
 
 	sf::Vector2f speed;
-	float velocityDrag;
-	float gravitySpeed;
 	sf::Vector2f velocity;
 	sf::Vector2u size;
 	int collisionTune;
+	sf::Vector2f velocityDrag;
+	float gravitySpeed, fallRate, currentFallRate;
+	bool jumping, canJump;
+	float jumpPower;
 
 	GamestateManager &gsm;
 };

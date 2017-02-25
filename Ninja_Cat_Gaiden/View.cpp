@@ -18,7 +18,7 @@ View::View(Model *model, GamestateManager &gsm)
 	// Setup the sprites
 	model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTest.png"));
 
-	// Setup the first  by adding it to the gamestate
+	// Setup the first level by making the gamestate manager for the model
 	Tilemap *tilemap = new Tilemap("Resources/Levels/test.png", textureManager, window);
 	Camera *camera = new Camera(*(this->model->player), *tilemap, window);
 	this->gsm.addGamestate(new Levelstate(tilemap, camera, &textureManager, model->player));
