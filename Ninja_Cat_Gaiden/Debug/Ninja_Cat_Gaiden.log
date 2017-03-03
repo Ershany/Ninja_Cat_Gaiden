@@ -1,6 +1,6 @@
 ﻿  Player.cpp
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(24): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(105): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(106): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(25): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(112): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(113): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Ninja_Cat_Gaiden.vcxproj -> C:\Users\Brady\documents\visual studio 2015\Projects\Ninja_Cat_Gaiden\Debug\Ninja_Cat_Gaiden.exe
   Ninja_Cat_Gaiden.vcxproj -> C:\Users\Brady\documents\visual studio 2015\Projects\Ninja_Cat_Gaiden\Debug\Ninja_Cat_Gaiden.pdb (Full PDB)

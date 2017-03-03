@@ -14,7 +14,7 @@ public:
 	Player(sf::Vector2f &position, GamestateManager &gsm);
 	~Player();
 
-	void update(const sf::Time &deltaTime);
+	void update(const sf::Time &deltaTime) override;
 
 	sf::Vector2f getVelocity();
 	sf::Vector2u getSize();

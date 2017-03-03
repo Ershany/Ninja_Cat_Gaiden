@@ -2,11 +2,14 @@
 #define GAMESTATE_H
 
 #include <SFML\Graphics.hpp>
+#include <vector>
 
 #include "Tilemap.h"
 #include "TextureManager.h"
 #include "Player.h"
 #include "Camera.h"
+
+class Projectile;
 
 class Gamestate {
 public:
@@ -19,7 +22,12 @@ public:
 	virtual void keyPressed(int keycode);
 	virtual void keyReleased(int keycode);
 
+	// Gamestate function
+	void updateProjectiles(const sf::Time &deltaTime);
+
 	Tilemap* getTilemap();
+
+	std::vector<Projectile*> projectiles;
 protected:
 	Tilemap *map;
 	TextureManager *textureManager;

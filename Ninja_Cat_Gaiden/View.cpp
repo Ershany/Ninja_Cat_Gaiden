@@ -3,6 +3,7 @@
 #include "Levelstate.h"
 #include "Defs.h"
 #include <iostream>
+#include "Projectile.h"
 
 View::View(Model *model, GamestateManager &gsm)
 	: gsm(gsm)
@@ -33,7 +34,20 @@ View::~View() {
 void View::render() {
 	window.clear();
 
+	// Render the map
 	gsm.render();
+
+	// Render projectiles
+	std::vector<Projectile*>::iterator iterator = gsm.getCurrentState()->projectiles.begin();
+	while (iterator != gsm.getCurrentState()->projectiles.end()) {
+		// Set the projectiles sprite position
+		(*iterator)->sprite.setPosition((*iterator)->position - gsm.getCurrentState()->getTilemap()->getOffset());
+		// Set the projectiles sprite texture (TEMP)
+		(*iterator)->sprite.setTexture(textureManager.getTexture("Resources/Player/shuriken.png"));
+		// Finally draw it and iterate to the next
+		window.draw((*iterator)->sprite);
+		iterator++;
+	}
 
 	// Draw the player
 	if (model->player->facingRight) {
@@ -55,6 +69,22 @@ void View::render() {
 		shape.move(-gsm.getCurrentState()->getTilemap()->getOffset());
 		window.draw(shape);
 		shape.move(gsm.getCurrentState()->getTilemap()->getOffset());
+	}
+
+	// Draw Projectile Collision Points
+	iterator = gsm.getCurrentState()->projectiles.begin();
+	while (iterator != gsm.getCurrentState()->projectiles.end()) {
+		for (int i = 0; i < 4; ++i) {
+			sf::RectangleShape shape;
+			shape.setPosition(sf::Vector2f((*iterator)->collisionPoints[i]));
+			shape.setSize(sf::Vector2f(2, 2));
+			shape.setFillColor(sf::Color::Red);
+			// Transform and draw
+			shape.move(-gsm.getCurrentState()->getTilemap()->getOffset());
+			window.draw(shape);
+			shape.move(gsm.getCurrentState()->getTilemap()->getOffset());
+		}
+		iterator++;
 	}
 #endif
 

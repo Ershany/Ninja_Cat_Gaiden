@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "GamestateManager.h"
+#include "Projectile.h"
 
 #include <iostream>
 #include <cmath>
@@ -18,10 +19,10 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	facingRight = true;
 
 	// Tweakable variables
-	this->speed.x = 64.0f; // Horizontal Speed
+	this->speed.x = 64.0f; // Horizontal Speed 
 	this->speed.y = 86.0f; // Vertical Speed (Jump Speed)
 	this->velocityDrag.x = 0.90f; // The rate at which velocity dissipates (Lower the faster the player stops moving)
-	this->velocityDrag.y = 0.95;
+	this->velocityDrag.y = 0.95; // The rate at which velocity dissipates (Lower the faster the player stops moving)
 	this->gravitySpeed = 0.25f; // The rate at which you fall due to gravity (Higher = faster)
 	this->collisionTune = 20; // Higher the value, more accurate collision is (NOTE: This may need to be turned up if the movement is fast)
 	this->jumpPower = 0.25f;
@@ -35,8 +36,14 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 Player::~Player() {
 
 }
-
+int temp = 0;
 void Player::update(const sf::Time &deltaTime) {
+	temp++;
+	if (temp % 60 == 0) {
+		gsm.getCurrentState()->projectiles.push_back(new Projectile(position, sf::Vector2u(16, 16), sf::Vector2f(-100.0f, -10.5f), gsm));
+		temp = 0;
+	}
+
 	// Make sure a gamestate is currently being played, log it if there is no gamestate on the stack
 	if (gsm.getCurrentState() == NULL) {
 		std::cout << "Player Update Cancelled: No Gamestate On The Stack" << std::endl;
@@ -191,6 +198,8 @@ void Player::checkJump() {
 
 	// If one of them are solid, the player can jump
 	if (leftFootTile->getSolid() || rightFootTile->getSolid() || middleFootTile->getSolid()) {
+		lastWallCollision.x = (int)position.x;
+		lastWallCollision.y = (int)position.y;
 		canJump = true;
 		jumping = false;
 	}

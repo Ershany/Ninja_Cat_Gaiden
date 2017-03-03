@@ -15,6 +15,7 @@ Levelstate::~Levelstate() {
 void Levelstate::update(const sf::Time &deltaTime) {
 	map->update(deltaTime);
 	player->update(deltaTime);
+	Gamestate::updateProjectiles(deltaTime);
 	camera->update(deltaTime);
 }
 
