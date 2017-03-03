@@ -27,8 +27,10 @@ private:
 	void updatePosition(const sf::Time &deltaTime);
 	void updateCollisionPoints();
 	void move(float x, float y);
-	/* Determines if the player can jump, and sets the boolean "canJump" accordingly*/
+	/* Determines if the player can jump, and sets the boolean "canJump" accordingly */
 	void checkJump();
+	/* Default velocityDrag provided : Vector2f(1.0f, 1.0f) */
+	void shootProjectile(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag = sf::Vector2f(1.0f, 1.0f));
 
 
 	sf::Vector2f speed;

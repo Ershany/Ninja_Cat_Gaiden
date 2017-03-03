@@ -37,14 +37,13 @@ void Gamestate::updateProjectiles(const sf::Time &deltaTime) {
 	while (iterator != projectiles.end()) {
 		// Check if the projectile should be removed
 		if ((*iterator)->shouldRemove) {
+			delete (*iterator);
 			iterator = projectiles.erase(iterator);
 		}
 		else { // else update it
 			(*iterator)->update(deltaTime);
 			iterator++;
 		}
-
-		
 	}
 }
 

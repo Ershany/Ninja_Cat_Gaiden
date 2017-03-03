@@ -40,7 +40,7 @@ int temp = 0;
 void Player::update(const sf::Time &deltaTime) {
 	temp++;
 	if (temp % 60 == 0) {
-		gsm.getCurrentState()->projectiles.push_back(new Projectile(position, sf::Vector2u(16, 16), sf::Vector2f(-100.0f, -10.5f), gsm));
+		this->shootProjectile(sf::Vector2u(16, 16), sf::Vector2f(-100.0f, -10.5f));
 		temp = 0;
 	}
 
@@ -220,6 +220,10 @@ void Player::checkJump() {
 			canJump = true;
 		}
 	}
+}
+
+void Player::shootProjectile(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag) {
+	gsm.getCurrentState()->projectiles.push_back(new Projectile(position, size, velocity, gsm, Projectile::Type::Shuriken, velocityDrag));
 }
 
 sf::Vector2u Player::getSize() {

@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Projectile::Projectile(sf::Vector2f &position, sf::Vector2u &size, sf::Vector2f &velocity, GamestateManager &gsm, sf::Vector2f &velocityDrag)
+Projectile::Projectile(sf::Vector2f &position, sf::Vector2u &size, sf::Vector2f &velocity, GamestateManager &gsm, Type type, sf::Vector2f &velocityDrag)
 	: gsm(gsm)
 {
 	this->position = position;
@@ -10,6 +10,7 @@ Projectile::Projectile(sf::Vector2f &position, sf::Vector2u &size, sf::Vector2f 
 	this->velocity = velocity;
 	this->velocityDrag = velocityDrag;
 	this->shouldRemove = false;
+	this->type = type;
 
 	// Tweakable Variables
 	this->collisionTune = 5;
@@ -24,8 +25,6 @@ Projectile::~Projectile() {
 void Projectile::update(const sf::Time &deltaTime) {
 	// Update the projectile position
 	move(velocity.x * deltaTime.asSeconds(), velocity.y * deltaTime.asSeconds());
-	//position.x += velocity.x * deltaTime.asSeconds();
-	//position.y += velocity.y * deltaTime.asSeconds();
 
 	// Change the projectiles velocity (TODO: Change this to be framerate independant)
 	this->velocity.x *= velocityDrag.x;

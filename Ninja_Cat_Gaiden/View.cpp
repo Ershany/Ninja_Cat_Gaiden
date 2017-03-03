@@ -42,8 +42,12 @@ void View::render() {
 	while (iterator != gsm.getCurrentState()->projectiles.end()) {
 		// Set the projectiles sprite position
 		(*iterator)->sprite.setPosition((*iterator)->position - gsm.getCurrentState()->getTilemap()->getOffset());
-		// Set the projectiles sprite texture (TEMP)
-		(*iterator)->sprite.setTexture(textureManager.getTexture("Resources/Player/shuriken.png"));
+
+		// Set the projectiles sprite texture
+		if ((*iterator)->type == Projectile::Type::Shuriken) {
+			(*iterator)->sprite.setTexture(textureManager.getTexture("Resources/Player/shuriken.png"));
+		}
+
 		// Finally draw it and iterate to the next
 		window.draw((*iterator)->sprite);
 		iterator++;
