@@ -20,6 +20,8 @@ public:
 	sf::Vector2u getSize();
 
 	bool upHeld, downHeld, leftHeld, rightHeld;
+	bool leftMouseButtonPressed;
+	sf::Vector2i mousePos;
 	bool facingRight;
 	sf::Vector2f collisionPoints[10]; // Used for collision detection
 private:
@@ -27,6 +29,7 @@ private:
 	void updatePosition(const sf::Time &deltaTime);
 	void updateCollisionPoints();
 	void move(float x, float y);
+	void checkProjectileShoot(const sf::Time &deltaTime);
 	/* Determines if the player can jump, and sets the boolean "canJump" accordingly */
 	void checkJump();
 	/* Default velocityDrag provided : Vector2f(1.0f, 1.0f) */
@@ -42,6 +45,8 @@ private:
 	bool jumping, canJump;
 	float jumpPower;
 	sf::Vector2i lastWallCollision;
+	sf::Time projectileFreq, currentProjectileFreq;
+	sf::Vector2f projectileSpeed;
 
 	GamestateManager &gsm;
 };

@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <cmath>
+#include "Defs.h"
 
 // TODO: Make movement framerate independant
 Player::Player(sf::Vector2f &pos, GamestateManager &gsm) 
@@ -27,6 +28,8 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	this->collisionTune = 20; // Higher the value, more accurate collision is (NOTE: This may need to be turned up if the movement is fast)
 	this->jumpPower = 0.25f;
 	this->fallRate = 0.1f; // Higher the value, faster the player falls
+	this->projectileSpeed = sf::Vector2f(1000.0f, 1000.0f);
+	this->projectileFreq = sf::milliseconds(500); // The rate at which a player can throw a projectile
 
 	// Initialize required variables
 	downHeld = false; upHeld = false; rightHeld = false; leftHeld = false;
@@ -36,19 +39,16 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 Player::~Player() {
 
 }
-int temp = 0;
-void Player::update(const sf::Time &deltaTime) {
-	temp++;
-	if (temp % 60 == 0) {
-		this->shootProjectile(sf::Vector2u(16, 16), sf::Vector2f(-100.0f, -10.5f));
-		temp = 0;
-	}
 
+void Player::update(const sf::Time &deltaTime) {
 	// Make sure a gamestate is currently being played, log it if there is no gamestate on the stack
 	if (gsm.getCurrentState() == NULL) {
 		std::cout << "Player Update Cancelled: No Gamestate On The Stack" << std::endl;
 		return;
 	}
+
+	// Check if the player is trying to shoot a projectile
+	checkProjectileShoot(deltaTime);
 	
 	// Make sure the player can jump if they are able to
 	checkJump();
@@ -219,6 +219,19 @@ void Player::checkJump() {
 		if (leftwardsLeftHighMiddleCheck->getSolid() && (lastWallCollision.x != (int)position.x || lastWallCollision.y == (int)position.y)) {
 			canJump = true;
 		}
+	}
+}
+
+void Player::checkProjectileShoot(const sf::Time &deltaTime) {
+	// Add to the current time since the player last threw a projectile
+	currentProjectileFreq += deltaTime;
+	if (leftMouseButtonPressed && currentProjectileFreq >= projectileFreq) {
+		// Throw a projectile and reset the time since a projectile was last thrown
+		sf::Vector2f mousePosFloat(mousePos.x, mousePos.y);
+		sf::Vector2f shootPosition = sprite.getPosition();
+		sf::Vector2f direction = normalize(mousePosFloat - shootPosition);
+		shootProjectile(sf::Vector2u(16, 16), direction * projectileSpeed);
+		currentProjectileFreq = sf::milliseconds(0);
 	}
 }
 

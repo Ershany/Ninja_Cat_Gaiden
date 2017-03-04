@@ -13,6 +13,15 @@ Controller::~Controller() {
 }
 
 void Controller::inputs() {
+	// Check for mouse input
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+		model->player->leftMouseButtonPressed = true;
+		model->player->mousePos = sf::Mouse::getPosition(view->window);
+	}
+	else {
+		model->player->leftMouseButtonPressed = false;
+	}
+
 	// Update the input manager
 	inputManager->update();
 }
