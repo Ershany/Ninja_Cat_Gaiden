@@ -73,7 +73,7 @@ void Tilemap::load(std::string levelPath) {
 			else if (color.r == 255 && color.g == 153 && color.b == 0) {
 				tiles[row][col].sprite.setTexture(textureManager.getTexture("Resources/Tiles/spikes.png"));
 				tiles[row][col].setDamaging(true);
-				tiles[row][col].setDamageAmount(1);
+				tiles[row][col].setDamageAmount(20);
 			}
 			else if (color.r == 0 && color.g == 0 && color.b == 0) {
 				tiles[row][col].setTransparent(true);

@@ -3,6 +3,7 @@
 #include "Model.h"
 #include "TextureManager.h"
 #include "GamestateManager.h"
+#include "HUD.h"
 
 class View {
 public:
@@ -10,11 +11,11 @@ public:
 	~View();
 	
 	void render();
-
-
-	Model *model;
 	
+	Model *model;
+
 	sf::RenderWindow window;
 	TextureManager textureManager;
 	GamestateManager &gsm;
+	HUD *hud;
 };

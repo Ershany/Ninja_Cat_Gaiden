@@ -9,12 +9,14 @@ View::View(Model *model, GamestateManager &gsm)
 	: gsm(gsm)
 {
 	this->model = model;
-
+	
 	// Setup the window
 	int width = 1200;
 	int height = width / 16 * 9;
 	window.create(sf::VideoMode(width, height), "Ninja Cat Gaiden");
 	window.setFramerateLimit(60);
+
+	hud = new HUD(this->model, &window, &textureManager);
 
 	// Setup the sprites
 	model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestRight.png"));
@@ -45,7 +47,7 @@ void View::render() {
 
 		// Set the projectiles sprite texture
 		if ((*iterator)->type == Projectile::Type::Shuriken) {
-			(*iterator)->sprite.setTexture(textureManager.getTexture("Resources/Player/shuriken.png"));
+			(*iterator)->sprite.setTexture(textureManager.getTexture("Resources/Player/craftables/shuriken.png"));
 		}
 
 		// Finally draw it and iterate to the next
@@ -67,6 +69,8 @@ void View::render() {
 	}
 
 	window.draw(model->player->sprite);
+
+	hud->draw();
 
 #if DEBUG
 	// Draw Player Collision Points

@@ -12,8 +12,10 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 {
 	// Non-Tweakable Variables
 	this->isInvincible = false;
-	this->maxHealth = 5;
+	this->maxHealth = 100;
 	this->currentHealth = maxHealth;
+	this->maxStamina = 100;
+	this->currentStamina = maxStamina;
 	this->isDead = false;
 	this->position = pos;
 	this->size.x = 56;
@@ -60,6 +62,9 @@ void Player::update(const sf::Time &deltaTime) {
 	if(!isDead)
 		checkJump();
 
+	if (currentStamina < maxStamina)
+		currentStamina++;
+
 	// Update the player's velocity and position
 	updateVelocity(deltaTime);
 	updatePosition(deltaTime);
@@ -81,11 +86,12 @@ void Player::updateVelocity(const sf::Time &deltaTime) {
 			facingRight = true;
 		}
 		// Only allow the player to jump if they are able to, and if they are not jumping on the same wall they previously jumped off of
-		if (upHeld && canJump) {
+		if (upHeld && canJump && currentStamina >= 50) {
 			lastWallCollision.x = (int)position.x;
 			lastWallCollision.y = (int)position.y;
 			velocity.y = -jumpPower;
 			jumping = true;
+			currentStamina -= 50;
 		}
 
 		// Velocity Affected By Input
@@ -254,13 +260,14 @@ void Player::checkTileDamage(const sf::Time &deltaTime) {
 void Player::checkProjectileShoot(const sf::Time &deltaTime) {
 	// Add to the current time since the player last threw a projectile
 	currentProjectileFreq += deltaTime;
-	if (leftMouseButtonPressed && currentProjectileFreq >= projectileFreq) {
+	if (leftMouseButtonPressed && currentProjectileFreq >= projectileFreq && currentStamina >= 10) {
 		// Throw a projectile and reset the time since a projectile was last thrown
 		sf::Vector2f mousePosFloat(mousePos.x, mousePos.y);
 		sf::Vector2f shootPosition = sprite.getPosition();
 		sf::Vector2f direction = normalize(mousePosFloat - shootPosition);
 		shootProjectile(sf::Vector2u(16, 16), direction * projectileSpeed);
 		currentProjectileFreq = sf::milliseconds(0);
+		currentStamina -= 10;
 	}
 }
 
@@ -294,4 +301,20 @@ sf::Vector2u Player::getSize() {
 
 sf::Vector2f Player::getVelocity() {
 	return velocity;
+}
+
+int Player::getCurrHealth() {
+	return currentHealth;
+}
+
+int Player::getMaxHealth() {
+	return maxHealth;
+}
+
+int Player::getCurrStamina() {
+	return currentStamina;
+}
+
+int Player::getMaxStamina() {
+	return maxStamina;
 }

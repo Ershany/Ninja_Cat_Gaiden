@@ -1,7 +1,14 @@
-﻿  Player.cpp
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(30): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(124): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(125): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(259): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Tilemap.cpp
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\tilemap.cpp(17): warning C4018: '<': signed/unsigned mismatch
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\tilemap.cpp(18): warning C4018: '<': signed/unsigned mismatch
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\tilemap.cpp(29): warning C4018: '>': signed/unsigned mismatch
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\tilemap.cpp(34): warning C4018: '>': signed/unsigned mismatch
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\tilemap.cpp(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\tilemap.cpp(61): warning C4018: '<': signed/unsigned mismatch
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\tilemap.cpp(85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\tilemap.cpp(104): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\tilemap.cpp(105): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\tilemap.cpp(113): warning C4018: '>=': signed/unsigned mismatch
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\tilemap.cpp(134): warning C4018: '>=': signed/unsigned mismatch
   Ninja_Cat_Gaiden.vcxproj -> C:\Users\Brady\documents\visual studio 2015\Projects\Ninja_Cat_Gaiden\Debug\Ninja_Cat_Gaiden.exe
   Ninja_Cat_Gaiden.vcxproj -> C:\Users\Brady\documents\visual studio 2015\Projects\Ninja_Cat_Gaiden\Debug\Ninja_Cat_Gaiden.pdb (Full PDB)

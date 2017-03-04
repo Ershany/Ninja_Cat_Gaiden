@@ -16,8 +16,13 @@ public:
 
 	void update(const sf::Time &deltaTime) override;
 
+	//Getters
 	sf::Vector2f getVelocity();
 	sf::Vector2u getSize();
+	int getCurrHealth();
+	int getMaxHealth();
+	int getCurrStamina();
+	int getMaxStamina();
 
 	bool upHeld, downHeld, leftHeld, rightHeld;
 	bool leftMouseButtonPressed;
@@ -40,6 +45,7 @@ private:
 	void shootProjectile(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag = sf::Vector2f(1.0f, 1.0f));
 
 	int maxHealth, currentHealth;
+	int maxStamina, currentStamina;
 
 	sf::Vector2f speed;
 	sf::Vector2f velocity;

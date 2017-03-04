@@ -3,6 +3,7 @@
 #include <SFML\Graphics.hpp>
 
 #include "GamestateManager.h"
+#include "Projectile.h"
 
 class Model {
 public:
@@ -16,4 +17,6 @@ public:
 	
 	GamestateManager gsm;
 	Player *player;
+	
+	int score;
 };
