@@ -54,12 +54,18 @@ void View::render() {
 	}
 
 	// Draw the player
-	if (model->player->facingRight) {
-		model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestRight.png"));
+	if (model->player->isDead) {
+		model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerDead.png"));
 	}
 	else {
-		model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestLeft.png"));
+		if (model->player->facingRight) {
+			model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestRight.png"));
+		}
+		else {
+			model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestLeft.png"));
+		}
 	}
+
 	window.draw(model->player->sprite);
 
 #if DEBUG

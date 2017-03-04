@@ -7,6 +7,8 @@ Tile::Tile() {
 	this->position = sf::Vector2f(0.0f, 0.0f);
 	this->solid = false;
 	this->projectileSolid = false;
+	this->damaging = false;
+	this->damageAmount = 0;
 }
 
 Tile::Tile(sf::Vector2f &position, bool solid, bool projectileSolid) {
@@ -43,6 +45,14 @@ void Tile::setTransparent(bool choice) {
 	this->transparent = choice;
 }
 
+void Tile::setDamaging(bool choice) {
+	damaging = choice;
+}
+
+void Tile::setDamageAmount(int amount) {
+	damageAmount = amount;
+}
+
 bool Tile::getSolid() const {
 	return solid;
 }
@@ -53,4 +63,12 @@ bool Tile::getProjecitleSolid() const {
 
 bool Tile::getTransparent() const {
 	return transparent;
+}
+
+bool Tile::getDamaging() const {
+	return damaging;
+}
+
+int Tile::getDamageAmount() const {
+	return damageAmount;
 }

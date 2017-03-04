@@ -11,6 +11,10 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	: gsm(gsm)
 {
 	// Non-Tweakable Variables
+	this->isInvincible = false;
+	this->maxHealth = 5;
+	this->currentHealth = maxHealth;
+	this->isDead = false;
 	this->position = pos;
 	this->size.x = 56;
 	this->size.y = 68;
@@ -30,6 +34,7 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	this->fallRate = 0.1f; // Higher the value, faster the player falls
 	this->projectileSpeed = sf::Vector2f(1000.0f, 1000.0f);
 	this->projectileFreq = sf::milliseconds(500); // The rate at which a player can throw a projectile
+	this->invincibilityTime = sf::milliseconds(500); // The amount of time the player is invincible after getting hit
 
 	// Initialize required variables
 	downHeld = false; upHeld = false; rightHeld = false; leftHeld = false;
@@ -48,10 +53,12 @@ void Player::update(const sf::Time &deltaTime) {
 	}
 
 	// Check if the player is trying to shoot a projectile
-	checkProjectileShoot(deltaTime);
+	if(!isDead)
+		checkProjectileShoot(deltaTime);
 	
 	// Make sure the player can jump if they are able to
-	checkJump();
+	if(!isDead)
+		checkJump();
 
 	// Update the player's velocity and position
 	updateVelocity(deltaTime);
@@ -63,25 +70,27 @@ void Player::update(const sf::Time &deltaTime) {
 
 void Player::updateVelocity(const sf::Time &deltaTime) {
 	// Get the horizontal input from the player
-	float xChange = 0.0f;
-	if (leftHeld) {
-		xChange -= 1.0f;
-		facingRight = false;
-	}
-	if (rightHeld) {
-		xChange += 1.0f;
-		facingRight = true;
-	}
-	// Only allow the player to jump if they are able to, and if they are not jumping on the same wall they previously jumped off of
-	if (upHeld && canJump) {
-		lastWallCollision.x = (int)position.x;
-		lastWallCollision.y = (int)position.y;
-		velocity.y = -jumpPower;
-		jumping = true;
-	}
+	if (!isDead) {
+		float xChange = 0.0f;
+		if (leftHeld) {
+			xChange -= 1.0f;
+			facingRight = false;
+		}
+		if (rightHeld) {
+			xChange += 1.0f;
+			facingRight = true;
+		}
+		// Only allow the player to jump if they are able to, and if they are not jumping on the same wall they previously jumped off of
+		if (upHeld && canJump) {
+			lastWallCollision.x = (int)position.x;
+			lastWallCollision.y = (int)position.y;
+			velocity.y = -jumpPower;
+			jumping = true;
+		}
 
-	// Velocity Affected By Input
-	velocity.x += deltaTime.asSeconds() * xChange;
+		// Velocity Affected By Input
+		velocity.x += deltaTime.asSeconds() * xChange;
+	}
 
 	// Gravity
 	if (velocity.y > 0) { currentFallRate += fallRate; }
@@ -98,6 +107,9 @@ void Player::updateVelocity(const sf::Time &deltaTime) {
 void Player::updatePosition(const sf::Time &deltaTime) {
 	// Update the player position relative to the velocity and speed
 	move(velocity.x * speed.x, velocity.y * speed.y);
+
+	// Check if the player is taking damage
+	checkTileDamage(deltaTime);
 }
 
 void Player::updateCollisionPoints() {
@@ -222,6 +234,23 @@ void Player::checkJump() {
 	}
 }
 
+void Player::checkTileDamage(const sf::Time &deltaTime) {
+	// Get the tiles right below the feet of the player
+	Tilemap *map = gsm.getCurrentState()->getTilemap();
+	Tile *leftFootTile = map->getTileByCoordinates(collisionPoints[0]);
+	Tile *rightFootTile = map->getTileByCoordinates(collisionPoints[1]);
+	Tile *middleFootTile = map->getTileByCoordinates(collisionPoints[7]);
+
+	// Get the tile that deals the most damage, and then take that much damage
+	if (leftFootTile->getDamaging() || rightFootTile->getDamaging() || middleFootTile->getDamaging()) {
+		int maxAmount = leftFootTile->getDamageAmount();
+		if (rightFootTile->getDamageAmount() > maxAmount) { maxAmount = rightFootTile->getDamageAmount(); }
+		if (middleFootTile->getDamageAmount() > maxAmount) { maxAmount = middleFootTile->getDamageAmount(); }
+
+		takeDamage(maxAmount, deltaTime);
+	}
+}
+
 void Player::checkProjectileShoot(const sf::Time &deltaTime) {
 	// Add to the current time since the player last threw a projectile
 	currentProjectileFreq += deltaTime;
@@ -237,6 +266,26 @@ void Player::checkProjectileShoot(const sf::Time &deltaTime) {
 
 void Player::shootProjectile(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag) {
 	gsm.getCurrentState()->projectiles.push_back(new Projectile(position, size, velocity, gsm, Projectile::Type::Shuriken, velocityDrag));
+}
+
+void Player::takeDamage(int amount, const sf::Time &deltaTime) {
+	if (isInvincible) {
+		currentInvincibilityTime += deltaTime;
+
+		if (currentInvincibilityTime >= invincibilityTime) {
+			isInvincible = false;
+		}
+	}
+	else {
+		currentHealth -= amount;
+		isInvincible = true;
+		currentInvincibilityTime = sf::milliseconds(0);
+
+		if (currentHealth <= 0) {
+			currentHealth = 0;
+			isDead = true;
+		}
+	}
 }
 
 sf::Vector2u Player::getSize() {
