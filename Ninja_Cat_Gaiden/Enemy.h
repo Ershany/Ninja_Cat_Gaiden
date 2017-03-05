@@ -15,6 +15,7 @@ public:
 
 	void update(const sf::Time &deltaTime) override;
 
+	sf::Vector2u size;
 	bool shouldRemove;
 	Type type;
 protected:
@@ -22,6 +23,5 @@ protected:
 
 	sf::Vector2f speed;
 	sf::Vector2f velocity;
-	sf::Vector2u size;
 	int health;
 };

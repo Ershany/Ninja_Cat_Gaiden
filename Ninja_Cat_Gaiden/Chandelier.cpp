@@ -1,5 +1,7 @@
 #include "Chandelier.h"
 #include "Projectile.h"
+#include "Enemy.h"
+#include "Defs.h"
 
 #include <iostream>
 
@@ -17,6 +19,7 @@ Chandelier::Chandelier(sf::Vector2f &position, GamestateManager &gsm)
 	this->fallSpeed = 1200.0f;
 	this->maxSpeed = 1000.0f;
 	this->collisionTune = 10;
+	this->intersectionLength = 100;
 }
 
 Chandelier::~Chandelier() {
@@ -44,7 +47,20 @@ void Chandelier::update(const sf::Time &deltaTime) {
 			else {
 				onGround = true;
 			}
-		}		
+		}
+		
+		// Check if it intersects with someone
+		std::vector<Enemy*>::iterator iterator = gsm.getCurrentState()->enemies.begin();
+		while (iterator != gsm.getCurrentState()->enemies.end()) {
+			Enemy *tempEnemy = (*iterator);
+
+			sf::Vector2f result = (sf::Vector2f(position.x + 64, position.y + 48)) - (sf::Vector2f((*iterator)->position.x + (*iterator)->size.x / 2, (*iterator)->position.y + (*iterator)->size.y / 2));
+			if (length(result) < intersectionLength && (*iterator)->position.y > position.y + 62) {
+				(*iterator)->shouldRemove = true;
+			}
+
+			iterator++;
+		}
 	}
 	else {
 		// Loop through the projectiles and look for collision

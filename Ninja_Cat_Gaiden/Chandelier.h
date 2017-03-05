@@ -11,6 +11,7 @@ public:
 	void action() override;
 private:
 	sf::Vector2i chainSize;
+	float intersectionLength;
 	
 	float fallSpeed;
 	sf::Vector2f velocity;
