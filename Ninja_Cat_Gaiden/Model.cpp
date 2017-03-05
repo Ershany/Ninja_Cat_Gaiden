@@ -15,9 +15,11 @@ Model::~Model() {
 void Model::init() {
 	// Add enemies
 	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((20 << 5) + 20, (36 << 5) + 2), gsm));
+	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((59 << 5) + 20, (67 << 5) + 2), gsm));
 
 	// Add Interactable Objects
 	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((20 << 5) - 15, (29 << 5)), gsm));
+	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((59 << 5) - 15, (50 << 5)), gsm));
 }
 
 void Model::update(sf::Time deltaTime) {
