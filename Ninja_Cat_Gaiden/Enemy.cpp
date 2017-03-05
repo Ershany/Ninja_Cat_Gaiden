@@ -4,6 +4,7 @@ Enemy::Enemy(sf::Vector2f &position, GamestateManager &gsm)
 	: gsm(gsm)
 {
 	this->position = position;
+	this->shouldRemove = false;
 }
 
 Enemy::~Enemy() {

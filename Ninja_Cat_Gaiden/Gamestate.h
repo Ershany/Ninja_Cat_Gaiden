@@ -10,6 +10,7 @@
 #include "Camera.h"
 
 class Projectile;
+class Enemy;
 
 class Gamestate {
 public:
@@ -24,10 +25,12 @@ public:
 
 	// Gamestate function
 	void updateProjectiles(const sf::Time &deltaTime);
+	void updateEnemies(const sf::Time &deltaTime);
 
 	Tilemap* getTilemap();
 
 	std::vector<Projectile*> projectiles;
+	std::vector<Enemy*> enemies;
 protected:
 	Tilemap *map;
 	TextureManager *textureManager;

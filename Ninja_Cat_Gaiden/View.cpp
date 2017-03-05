@@ -4,6 +4,7 @@
 #include "Defs.h"
 #include <iostream>
 #include "Projectile.h"
+#include "Enemy.h"
 
 View::View(Model *model, GamestateManager &gsm)
 	: gsm(gsm)
@@ -25,8 +26,7 @@ View::View(Model *model, GamestateManager &gsm)
 	Tilemap *tilemap = new Tilemap("Resources/Levels/test.png", textureManager, window);
 	Camera *camera = new Camera(*(this->model->player), *tilemap, window);
 	this->gsm.addGamestate(new Levelstate(tilemap, camera, &textureManager, model->player));
-	// Set the models gsm to the one we just initialized
-	model->setGSM(gsm);
+	model->setGSM(gsm); // Set the models gsm to the one we just initialized
 }
 
 View::~View() {
@@ -53,6 +53,21 @@ void View::render() {
 		// Finally draw it and iterate to the next
 		window.draw((*iterator)->sprite);
 		iterator++;
+	}
+
+	// Render the enemies
+	std::vector<Enemy*>::iterator enemyIterator = gsm.getCurrentState()->enemies.begin();
+	while (enemyIterator != gsm.getCurrentState()->enemies.end()) {
+		// Set the enemies sprite position
+		(*enemyIterator)->sprite.setPosition((*enemyIterator)->position - gsm.getCurrentState()->getTilemap()->getOffset());
+
+		// Set the enemies sprite texture
+		if ((*enemyIterator)->type == Enemy::Samurai) {
+			(*enemyIterator)->sprite.setTexture(textureManager.getTexture("Resources/Enemy/Samurai/samuraiRatLeft.png"));
+		}
+
+		window.draw((*enemyIterator)->sprite);
+		enemyIterator++;
 	}
 
 	// Draw the player

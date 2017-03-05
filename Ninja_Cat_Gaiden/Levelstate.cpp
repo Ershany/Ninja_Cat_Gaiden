@@ -13,14 +13,12 @@ Levelstate::~Levelstate() {
 }
 
 void Levelstate::update(const sf::Time &deltaTime) {
-	map->update(deltaTime);
 	player->update(deltaTime);
-	Gamestate::updateProjectiles(deltaTime);
-	camera->update(deltaTime);
+	Gamestate::update(deltaTime);
 }
 
 void Levelstate::render() {
-	camera->render();
+	Gamestate::render();
 }
 
 void Levelstate::keyPressed(int keycode) {
