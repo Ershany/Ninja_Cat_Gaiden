@@ -11,7 +11,7 @@ public:
 	enum Type { Samurai };
 
 	Enemy(sf::Vector2f &position, GamestateManager &gsm);
-	~Enemy();
+	virtual ~Enemy();
 
 	void update(const sf::Time &deltaTime) override;
 

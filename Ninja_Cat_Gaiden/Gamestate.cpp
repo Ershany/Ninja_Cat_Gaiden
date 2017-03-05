@@ -2,6 +2,7 @@
 
 #include "Projectile.h"
 #include "Enemy.h"
+#include "InteractableObject.h"
 
 #include <iostream>
 
@@ -12,13 +13,30 @@ Gamestate::Gamestate(Tilemap *map, Camera *camera, TextureManager *textureManage
 }
 
 Gamestate::~Gamestate() {
+	std::vector<Projectile*>::iterator iterator = projectiles.begin();
+	while (iterator != projectiles.end()) {
+		delete (*iterator);
+		iterator++;
+	}
 
+	std::vector<Enemy*>::iterator enemyIterator = enemies.begin();
+	while (enemyIterator != enemies.end()) {
+		delete (*enemyIterator);
+		enemyIterator++;
+	}
+
+	std::vector<InteractableObject*>::iterator objectIterator = objects.begin();
+	while (objectIterator != objects.end()) {
+		delete (*objectIterator);
+		objectIterator++;
+	}
 }
 
 void Gamestate::update(const sf::Time &deltaTime) {
 	map->update(deltaTime);
 	updateProjectiles(deltaTime);
 	updateEnemies(deltaTime);
+	updateObjects(deltaTime);
 	camera->update(deltaTime);
 }
 
@@ -56,6 +74,21 @@ void Gamestate::updateEnemies(const sf::Time &deltaTime) {
 		if ((*iterator)->shouldRemove) {
 			delete (*iterator);
 			iterator = enemies.erase(iterator);
+		}
+		else { // else update it
+			(*iterator)->update(deltaTime);
+			iterator++;
+		}
+	}
+}
+
+void Gamestate::updateObjects(const sf::Time &deltaTime) {
+	std::vector<InteractableObject*>::iterator iterator = objects.begin();
+	while (iterator != objects.end()) {
+		// Check if the object should be removed
+		if ((*iterator)->shouldRemove) {
+			delete (*iterator);
+			iterator = objects.erase(iterator);
 		}
 		else { // else update it
 			(*iterator)->update(deltaTime);

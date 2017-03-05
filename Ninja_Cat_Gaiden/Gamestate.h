@@ -11,6 +11,7 @@
 
 class Projectile;
 class Enemy;
+class InteractableObject;
 
 class Gamestate {
 public:
@@ -26,11 +27,13 @@ public:
 	// Gamestate function
 	void updateProjectiles(const sf::Time &deltaTime);
 	void updateEnemies(const sf::Time &deltaTime);
+	void updateObjects(const sf::Time &deltaTime);
 
 	Tilemap* getTilemap();
 
 	std::vector<Projectile*> projectiles;
 	std::vector<Enemy*> enemies;
+	std::vector<InteractableObject*> objects;
 protected:
 	Tilemap *map;
 	TextureManager *textureManager;

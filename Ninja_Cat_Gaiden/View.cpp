@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Projectile.h"
 #include "Enemy.h"
+#include "InteractableObject.h"
 
 View::View(Model *model, GamestateManager &gsm)
 	: gsm(gsm)
@@ -34,7 +35,7 @@ View::~View() {
 }
 
 void View::render() {
-	window.clear();
+	window.clear(sf::Color(0, 0, 50));
 
 	// Render the map
 	gsm.render();
@@ -68,6 +69,26 @@ void View::render() {
 
 		window.draw((*enemyIterator)->sprite);
 		enemyIterator++;
+	}
+
+	// Render the objects
+	std::vector<InteractableObject*>::iterator objectIterator = gsm.getCurrentState()->objects.begin();
+	while (objectIterator != gsm.getCurrentState()->objects.end()) {
+		// Set the objects position
+		(*objectIterator)->sprite.setPosition((*objectIterator)->position - gsm.getCurrentState()->getTilemap()->getOffset());
+
+		// Set the objects sprite texture
+		if ((*objectIterator)->type == InteractableObject::Chandelier) {
+			if ((*objectIterator)->activated) {
+				(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/brokenChandelier.png"));
+			}
+			else {
+				(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/chandelier.png"));
+			}
+		}
+
+		window.draw((*objectIterator)->sprite);
+		objectIterator++;
 	}
 
 	// Draw the player
