@@ -66,6 +66,12 @@ void Chandelier::update(const sf::Time &deltaTime) {
 		// Loop through the projectiles and look for collision
 		std::vector<Projectile*>::iterator iterator = gsm.getCurrentState()->projectiles.begin();
 		while (iterator != gsm.getCurrentState()->projectiles.end()) {
+			// Make sure that its a shuriken, if not then skip it
+			if ((*iterator)->type != Projectile::Type::Shuriken) {
+				iterator++;
+				continue;
+			}
+
 			sf::Vector2f projectilePosition = (*iterator)->position;
 
 			if (projectilePosition.x > position.x + 64 - chainSize.x && projectilePosition.x < position.x + 64 + chainSize.x &&

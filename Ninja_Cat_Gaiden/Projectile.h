@@ -8,7 +8,7 @@
 
 class Projectile : public Updateable, public Renderable {
 public:
-	enum Type { Shuriken };
+	enum Type { Shuriken, Smokebomb };
 
 	Projectile(sf::Vector2f &position, sf::Vector2u &size, sf::Vector2f &velocity, GamestateManager &gsm, Type type, sf::Vector2f &velocityDrag = sf::Vector2f(1.0f, 1.0f));
 	~Projectile();

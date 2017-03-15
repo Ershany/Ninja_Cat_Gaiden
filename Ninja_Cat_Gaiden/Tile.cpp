@@ -6,6 +6,7 @@ int Tile::height = 32;
 Tile::Tile() {
 	this->position = sf::Vector2f(0.0f, 0.0f);
 	this->solid = false;
+	this->seeAble = true;
 	this->projectileSolid = false;
 	this->damaging = false;
 	this->damageAmount = 0;
@@ -37,6 +38,10 @@ void Tile::setSolid(bool choice) {
 	this->solid = choice;
 }
 
+void Tile::setSeeAble(bool choice) {
+	this->seeAble = choice;
+}
+
 void Tile::setProjectileSolid(bool choice) {
 	this->projectileSolid = choice;
 }
@@ -55,6 +60,10 @@ void Tile::setDamageAmount(int amount) {
 
 bool Tile::getSolid() const {
 	return solid;
+}
+
+bool Tile::getSeeAble() const {
+	return seeAble;
 }
 
 bool Tile::getProjecitleSolid() const {

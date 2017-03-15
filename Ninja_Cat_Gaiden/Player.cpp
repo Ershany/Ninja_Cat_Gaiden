@@ -265,14 +265,19 @@ void Player::checkProjectileShoot(const sf::Time &deltaTime) {
 		sf::Vector2f mousePosFloat(mousePos.x, mousePos.y);
 		sf::Vector2f shootPosition = sprite.getPosition();
 		sf::Vector2f direction = normalize(mousePosFloat - shootPosition);
-		shootProjectile(sf::Vector2u(16, 16), direction * projectileSpeed);
+		//shootShuriken(sf::Vector2u(16, 16), direction * projectileSpeed);
+		shootSmokebomb(sf::Vector2u(16, 16), direction * projectileSpeed);
 		currentProjectileFreq = sf::milliseconds(0);
 		currentStamina -= 10;
 	}
 }
 
-void Player::shootProjectile(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag) {
+void Player::shootShuriken(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag) {
 	gsm.getCurrentState()->projectiles.push_back(new Projectile(position, size, velocity, gsm, Projectile::Type::Shuriken, velocityDrag));
+}
+
+void Player::shootSmokebomb(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag) {
+	gsm.getCurrentState()->projectiles.push_back(new Projectile(position, size, velocity, gsm, Projectile::Type::Smokebomb, velocityDrag));
 }
 
 void Player::takeDamage(int amount, const sf::Time &deltaTime) {

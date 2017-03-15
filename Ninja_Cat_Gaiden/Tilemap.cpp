@@ -68,6 +68,7 @@ void Tilemap::load(std::string levelPath) {
 			}
 			else if (color.r == 86 && color.g == 86 && color.b == 86) {
 				tiles[row][col].sprite.setTexture(textureManager.getTexture("Resources/Tiles/stone.png"));
+				tiles[row][col].setSeeAble(false);
 				tiles[row][col].setSolid(true);
 			}
 			else if (color.r == 255 && color.g == 153 && color.b == 0) {

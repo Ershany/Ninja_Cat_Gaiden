@@ -14,11 +14,11 @@ Samurai::Samurai(sf::Vector2f &position, GamestateManager &gsm, Player *player)
 	// Tweakable Variables
 	this->size.x = 67;
 	this->size.y = 62;
-	this->lengthPerSightCheck = 10;
+	this->lengthPerSightCheck = 5;
 	this->speed.x = 250.0f;
 	this->speed.y = 0.0f;
 	this->waitTime = sf::milliseconds(3000);
-	this->sightRange = 650.0f;
+	this->sightRange = 645.0f;
 }
 
 Samurai::~Samurai() {
@@ -47,14 +47,14 @@ void Samurai::update(const sf::Time &deltaTime) {
 	// Check if the player is within range
 	sf::Vector2f difference = player->position - position;
 	float differenceLength = length(difference);
-	if (differenceLength <= sightRange && ((facingRight && difference.x >= 0) || (!facingRight && difference.x <= 0))) {
+	if (differenceLength <= sightRange && ((facingRight && difference.x >= 0) || (!facingRight && difference.x <= 0)) && abs(difference.x) >= abs(difference.y)) {
 		// Get the current raycast position and how much to update it every iteration of the for loop
 		sf::Vector2f currentSightPos = position + sf::Vector2f(size.x * 0.5f, size.y * 0.2f);
 		int iterationAmount = differenceLength / lengthPerSightCheck;
 		sf::Vector2f updateAmount = sf::Vector2f(difference.x / iterationAmount, difference.y / iterationAmount);
 		// Check if the player can be seen from this point
 		for (int i = 0; i < iterationAmount; i++) {
-			if (map->getTileByCoordinates(currentSightPos)->getSolid()) {
+			if (!map->getTileByCoordinates(currentSightPos)->getSeeAble()) {
 				alertOfPlayer = false;
 				break;
 			}

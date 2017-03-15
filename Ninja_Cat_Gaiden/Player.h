@@ -43,7 +43,8 @@ private:
 	/* Determines if the player can jump, and sets the boolean "canJump" accordingly */
 	void checkJump();
 	/* Default velocityDrag provided : Vector2f(1.0f, 1.0f) */
-	void shootProjectile(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag = sf::Vector2f(1.0f, 1.0f));
+	void shootShuriken(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag = sf::Vector2f(1.0f, 1.0f));
+	void shootSmokebomb(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag = sf::Vector2f(1.0f, 1.0f));
 
 	int maxHealth, currentHealth;
 	int maxStamina, currentStamina;

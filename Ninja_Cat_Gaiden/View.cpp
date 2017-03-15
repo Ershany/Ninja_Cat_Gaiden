@@ -50,6 +50,9 @@ void View::render() {
 		if ((*iterator)->type == Projectile::Type::Shuriken) {
 			(*iterator)->sprite.setTexture(textureManager.getTexture("Resources/Player/shuriken.png"));
 		}
+		else if ((*iterator)->type == Projectile::Type::Smokebomb) {
+			(*iterator)->sprite.setTexture(textureManager.getTexture("Resources/Player/smokeBomb.png"));
+		}
 
 		// Finally draw it and iterate to the next
 		window.draw((*iterator)->sprite);
