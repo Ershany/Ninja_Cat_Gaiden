@@ -20,8 +20,8 @@ HUD::HUD(Model* m, sf::RenderWindow* w, TextureManager* t) {
 	score.setCharacterSize(20);
 	score.setPosition(sf::Vector2f(250, 560));
 
-	item.setScale(sf::Vector2f(3, 3));
-	item.setPosition(sf::Vector2f(55, 585));
+	//item.setScale(sf::Vector2f(3, 3));
+	item.setPosition(sf::Vector2f(45, 570));
 }
 
 void HUD::draw() {

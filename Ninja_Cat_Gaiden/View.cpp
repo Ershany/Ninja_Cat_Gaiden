@@ -48,7 +48,7 @@ void View::render() {
 
 		// Set the projectiles sprite texture
 		if ((*iterator)->type == Projectile::Type::Shuriken) {
-			(*iterator)->sprite.setTexture(textureManager.getTexture("Resources/Player/craftables/shuriken.png"));
+			(*iterator)->sprite.setTexture(textureManager.getTexture("Resources/Player/shuriken.png"));
 		}
 
 		// Finally draw it and iterate to the next
@@ -64,7 +64,22 @@ void View::render() {
 
 		// Set the enemies sprite texture
 		if ((*enemyIterator)->type == Enemy::Samurai) {
-			(*enemyIterator)->sprite.setTexture(textureManager.getTexture("Resources/Enemy/Samurai/samuraiRatLeft.png"));
+			if ((*enemyIterator)->facingRight) {
+				(*enemyIterator)->sprite.setTexture(textureManager.getTexture("Resources/Enemy/Samurai/samuraiRatRight.png"));
+			}
+			else {
+				(*enemyIterator)->sprite.setTexture(textureManager.getTexture("Resources/Enemy/Samurai/samuraiRatLeft.png"));
+			}
+		}
+
+		// Render the sight lines
+		if ((*enemyIterator)->alertOfPlayer) {
+			sf::Vertex line[2];
+			line[0].position = (model->player->position + sf::Vector2f(model->player->size.x * 0.5f, model->player->size.y * 0.5f)) - gsm.getCurrentState()->getTilemap()->getOffset();
+			line[0].color = sf::Color::Red;
+			line[1].position = ((*enemyIterator)->position + sf::Vector2f((*enemyIterator)->size.x * 0.5f, (*enemyIterator)->size.y * 0.5f)) - gsm.getCurrentState()->getTilemap()->getOffset();
+			line[1].color = sf::Color::Red;
+			window.draw(line, 2, sf::Lines);
 		}
 
 		window.draw((*enemyIterator)->sprite);

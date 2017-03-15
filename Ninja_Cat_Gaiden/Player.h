@@ -31,6 +31,7 @@ public:
 	sf::Vector2i mousePos;
 	bool facingRight;
 	sf::Vector2f collisionPoints[10]; // Used for collision detection
+	sf::Vector2u size;
 private:
 	void updateVelocity(const sf::Time &deltaTime);
 	void updatePosition(const sf::Time &deltaTime);
@@ -49,7 +50,6 @@ private:
 
 	sf::Vector2f speed;
 	sf::Vector2f velocity;
-	sf::Vector2u size;
 
 	int collisionTune;
 	sf::Vector2f velocityDrag;
