@@ -8,6 +8,12 @@ public:
 	~Samurai();
 
 	void update(const sf::Time &deltaTime) override;
+	bool moving;
 private:
 	int lengthPerSightCheck; // Smaller the value, the more accurate
+	float sightRange;
+
+	sf::Time waitTime, currentWaitTime;
+
+	void move(const sf::Time &deltaTime);
 };

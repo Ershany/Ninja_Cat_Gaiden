@@ -77,7 +77,7 @@ void View::render() {
 			sf::Vertex line[2];
 			line[0].position = (model->player->position + sf::Vector2f(model->player->size.x * 0.5f, model->player->size.y * 0.5f)) - gsm.getCurrentState()->getTilemap()->getOffset();
 			line[0].color = sf::Color::Red;
-			line[1].position = ((*enemyIterator)->position + sf::Vector2f((*enemyIterator)->size.x * 0.5f, (*enemyIterator)->size.y * 0.5f)) - gsm.getCurrentState()->getTilemap()->getOffset();
+			line[1].position = ((*enemyIterator)->position + sf::Vector2f((*enemyIterator)->size.x * 0.5f, (*enemyIterator)->size.y * 0.2f)) - gsm.getCurrentState()->getTilemap()->getOffset();
 			line[1].color = sf::Color::Red;
 			window.draw(line, 2, sf::Lines);
 		}
