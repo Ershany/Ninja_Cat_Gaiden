@@ -160,6 +160,9 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Chandelier.cpp" />
+    <ClCompile Include="ChemicalObj.cpp" />
+    <ClCompile Include="CollectibleObject.cpp" />
+    <ClCompile Include="ContainerObj.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Defs.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -176,6 +179,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Samurai.cpp" />
+    <ClCompile Include="ScrapMetalObj.cpp" />
     <ClCompile Include="Smoke.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -185,6 +189,9 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Chandelier.h" />
+    <ClInclude Include="ChemicalObj.h" />
+    <ClInclude Include="CollectibleObject.h" />
+    <ClInclude Include="ContainerObj.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Defs.h" />
     <ClInclude Include="Enemy.h" />
@@ -201,6 +208,7 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="Samurai.h" />
+    <ClInclude Include="ScrapMetalObj.h" />
     <ClInclude Include="Smoke.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Tile.h" />

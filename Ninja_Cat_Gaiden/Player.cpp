@@ -118,6 +118,15 @@ void Player::updatePosition(const sf::Time &deltaTime) {
 
 	// Check if the player is taking damage
 	checkTileDamage(deltaTime);
+
+	// Check if the player's invicibility should wear off
+	if (isInvincible) {
+		currentInvincibilityTime += deltaTime;
+
+		if (currentInvincibilityTime >= invincibilityTime) {
+			isInvincible = false;
+		}
+	}
 }
 
 void Player::updateCollisionPoints() {
@@ -283,14 +292,7 @@ void Player::shootSmokebomb(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vect
 }
 
 void Player::takeDamage(int amount, const sf::Time &deltaTime) {
-	if (isInvincible) {
-		currentInvincibilityTime += deltaTime;
-
-		if (currentInvincibilityTime >= invincibilityTime) {
-			isInvincible = false;
-		}
-	}
-	else {
+	if(!isInvincible) {
 		currentHealth -= amount;
 		isInvincible = true;
 		currentInvincibilityTime = sf::milliseconds(0);

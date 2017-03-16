@@ -126,6 +126,15 @@ void View::render() {
 		else if ((*objectIterator)->type == InteractableObject::Hideable) {
 			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/shrub.png"));
 		}
+		else if ((*objectIterator)->type == InteractableObject::ScrapMetal) {
+			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Collectibles/scrapMetal.png"));
+		}
+		else if ((*objectIterator)->type == InteractableObject::Container) {
+			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Collectibles/container.png"));
+		}
+		else if ((*objectIterator)->type == InteractableObject::Chemical) {
+			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Collectibles/chemical.png"));
+		}
 
 		window.draw((*objectIterator)->sprite);
 		objectIterator++;

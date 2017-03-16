@@ -10,6 +10,8 @@ Samurai::Samurai(sf::Vector2f &position, GamestateManager &gsm, Player *player)
 	this->type = Type::Samurai;
 	this->moving = true;
 	this->currentWaitTime = sf::milliseconds(0);
+	this->maxMovement = 5000.0f;
+	this->currentMovement = 0.0f;
 	
 	// Tweakable Variables
 	this->size.x = 67;
@@ -69,6 +71,14 @@ void Samurai::move(const sf::Time &deltaTime) {
 		// Move the samurai
 		position.x -= speed.x * deltaTime.asSeconds();
 	}
+
+	// Check if the enemy moved their max range already
+	currentMovement += speed.x * deltaTime.asSeconds();
+	// If it did then stop moving
+	if (currentMovement >= maxMovement) {
+		moving = false;
+	}
+
 
 	if (!footCheckTile->getSolid()) {
 		moving = false;
