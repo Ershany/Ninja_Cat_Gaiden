@@ -122,12 +122,7 @@ void View::render() {
 			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/smoke.png"));
 		}
 		else if ((*objectIterator)->type == InteractableObject::Hideable) {
-			if ((*objectIterator)->activated) {
-				(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/shrub.png"));
-			}
-			else {
-				(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/shrubCat.png"));
-			}
+			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/shrub.png"));
 		}
 
 		window.draw((*objectIterator)->sprite);

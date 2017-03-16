@@ -16,4 +16,5 @@ private:
 	sf::Time waitTime, currentWaitTime;
 
 	void move(const sf::Time &deltaTime);
+	void checkSight();
 };

@@ -62,6 +62,6 @@ void Smoke::update(const sf::Time &deltaTime) {
 	}
 }
 
-void Smoke::action() {
+void Smoke::action(const sf::Time &deltaTime) {
 
 }

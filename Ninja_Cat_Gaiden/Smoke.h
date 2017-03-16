@@ -8,7 +8,7 @@ public:
 	~Smoke();
 
 	virtual void update(const sf::Time &deltaTime) override;
-	virtual void action() override;
+	virtual void action(const sf::Time &deltaTime) override;
 private:
 	sf::Time current, duration;
 

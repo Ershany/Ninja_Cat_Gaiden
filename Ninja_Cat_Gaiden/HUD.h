@@ -17,6 +17,7 @@ public:
 	sf::RectangleShape health;
 	sf::RectangleShape stamina;
 	sf::Text score;
+	sf::Text hiddenInfo;
 	sf::Sprite hudMain;
 	sf::Sprite item;
 

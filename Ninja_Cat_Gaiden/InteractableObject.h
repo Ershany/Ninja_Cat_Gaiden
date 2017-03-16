@@ -14,7 +14,7 @@ public:
 	virtual ~InteractableObject();
 
 	virtual void update(const sf::Time &deltaTime) = 0;
-	virtual void action() = 0;
+	virtual void action(const sf::Time &deltaTime) = 0;
 
 
 	bool shouldRemove;

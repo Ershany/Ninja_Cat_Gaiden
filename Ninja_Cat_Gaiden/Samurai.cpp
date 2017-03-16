@@ -44,6 +44,41 @@ void Samurai::update(const sf::Time &deltaTime) {
 		}
 	}
 
+	// First check if the player is hidden
+	if (player->hidden) {
+		alertOfPlayer = false;
+	}
+	else {
+		// Else check if the AI can see the player
+		checkSight();
+	}
+}
+
+void Samurai::move(const sf::Time &deltaTime) {
+	// Get the tilemap
+	Tilemap *map = gsm.getCurrentState()->getTilemap();
+
+	Tile* footCheckTile = NULL;
+	if (facingRight) {
+		footCheckTile = map->getTileByCoordinates(position + sf::Vector2f(size.x + 1, size.y + 1));
+		// Move the samurai
+		position.x += speed.x * deltaTime.asSeconds();
+	}
+	else {
+		footCheckTile = map->getTileByCoordinates(position + sf::Vector2f(-1.0f, size.y + 1));
+		// Move the samurai
+		position.x -= speed.x * deltaTime.asSeconds();
+	}
+
+	if (!footCheckTile->getSolid()) {
+		moving = false;
+	}
+}
+
+void Samurai::checkSight() {
+	// Get the tilemap
+	Tilemap *map = gsm.getCurrentState()->getTilemap();
+
 	// Check if the player is within range
 	sf::Vector2f difference = player->position - position;
 	float differenceLength = length(difference);
@@ -66,26 +101,5 @@ void Samurai::update(const sf::Time &deltaTime) {
 	}
 	else {
 		alertOfPlayer = false;
-	}
-}
-
-void Samurai::move(const sf::Time &deltaTime) {
-	// Get the tilemap
-	Tilemap *map = gsm.getCurrentState()->getTilemap();
-
-	Tile* footCheckTile = NULL;
-	if (facingRight) {
-		footCheckTile = map->getTileByCoordinates(position + sf::Vector2f(size.x + 1, size.y + 1));
-		// Move the samurai
-		position.x += speed.x * deltaTime.asSeconds();
-	}
-	else {
-		footCheckTile = map->getTileByCoordinates(position + sf::Vector2f(-1.0f, size.y + 1));
-		// Move the samurai
-		position.x -= speed.x * deltaTime.asSeconds();
-	}
-
-	if (!footCheckTile->getSolid()) {
-		moving = false;
 	}
 }

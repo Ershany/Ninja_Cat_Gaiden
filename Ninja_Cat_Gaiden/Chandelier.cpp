@@ -19,7 +19,7 @@ Chandelier::Chandelier(sf::Vector2f &position, GamestateManager &gsm)
 	this->fallSpeed = 1200.0f;
 	this->maxSpeed = 1000.0f;
 	this->collisionTune = 10;
-	this->intersectionLength = 80;
+	this->intersectionLength = 85;
 }
 
 Chandelier::~Chandelier() {
@@ -85,6 +85,6 @@ void Chandelier::update(const sf::Time &deltaTime) {
 	}
 }
 
-void Chandelier::action() {
+void Chandelier::action(const sf::Time &deltaTime) {
 	
 }

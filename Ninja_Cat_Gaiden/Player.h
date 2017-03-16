@@ -28,6 +28,7 @@ public:
 	bool leftMouseButtonPressed;
 	bool isDead;
 	bool isInvincible;
+	bool hidden;
 	sf::Vector2i mousePos;
 	bool facingRight;
 	sf::Vector2f collisionPoints[10]; // Used for collision detection
