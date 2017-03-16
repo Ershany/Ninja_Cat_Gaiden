@@ -166,6 +166,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Gamestate.cpp" />
     <ClCompile Include="GamestateManager.cpp" />
+    <ClCompile Include="Hideable.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="InteractableObject.cpp" />
@@ -175,6 +176,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Samurai.cpp" />
+    <ClCompile Include="Smoke.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tilemap.cpp" />
@@ -189,6 +191,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Gamestate.h" />
     <ClInclude Include="GamestateManager.h" />
+    <ClInclude Include="Hideable.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="InteractableObject.h" />
@@ -198,6 +201,7 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="Samurai.h" />
+    <ClInclude Include="Smoke.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tilemap.h" />

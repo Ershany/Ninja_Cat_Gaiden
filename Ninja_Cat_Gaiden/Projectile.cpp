@@ -1,4 +1,5 @@
 #include "Projectile.h"
+#include "Smoke.h"
 
 #include <iostream>
 
@@ -63,6 +64,10 @@ void Projectile::move(float x, float y) {
 		// Check if there is any intersection
 		if (bottomLeftCheck->getSolid() || bottomRightCheck->getSolid() || topLeftCheck->getSolid() || topRightCheck->getSolid()) {
 			shouldRemove = true;
+			// Check if we should spawn smoke
+			if (type == Projectile::Type::Smokebomb) {
+				gsm.getCurrentState()->objects.push_back(new Smoke(position - sf::Vector2f(128.0f, 128.0f), gsm));
+			}
 		}
 		else {
 			this->position.x += xChange;

@@ -24,6 +24,7 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	this->currentFallRate = 1.0f; // Don't touch this, keeps track of the falling speed
 	this->lastWallCollision.x = -100; this->lastWallCollision.y = -100;
 	facingRight = true;
+	this->fHeld = false;
 
 	// Tweakable variables
 	this->speed.x = 64.0f; // Horizontal Speed 
@@ -265,8 +266,8 @@ void Player::checkProjectileShoot(const sf::Time &deltaTime) {
 		sf::Vector2f mousePosFloat(mousePos.x, mousePos.y);
 		sf::Vector2f shootPosition = sprite.getPosition();
 		sf::Vector2f direction = normalize(mousePosFloat - shootPosition);
-		//shootShuriken(sf::Vector2u(16, 16), direction * projectileSpeed);
-		shootSmokebomb(sf::Vector2u(16, 16), direction * projectileSpeed);
+		shootShuriken(sf::Vector2u(16, 16), direction * projectileSpeed);
+		//shootSmokebomb(sf::Vector2u(16, 16), direction * projectileSpeed);
 		currentProjectileFreq = sf::milliseconds(0);
 		currentStamina -= 10;
 	}

@@ -13,6 +13,12 @@ Gamestate::Gamestate(Tilemap *map, Camera *camera, TextureManager *textureManage
 }
 
 Gamestate::~Gamestate() {
+	std::vector<InteractableObject*>::iterator objectIterator = objects.begin();
+	while (objectIterator != objects.end()) {
+		delete (*objectIterator);
+		objectIterator++;
+	}
+
 	std::vector<Projectile*>::iterator iterator = projectiles.begin();
 	while (iterator != projectiles.end()) {
 		delete (*iterator);
@@ -23,12 +29,6 @@ Gamestate::~Gamestate() {
 	while (enemyIterator != enemies.end()) {
 		delete (*enemyIterator);
 		enemyIterator++;
-	}
-
-	std::vector<InteractableObject*>::iterator objectIterator = objects.begin();
-	while (objectIterator != objects.end()) {
-		delete (*objectIterator);
-		objectIterator++;
 	}
 }
 

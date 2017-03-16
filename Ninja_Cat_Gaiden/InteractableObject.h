@@ -8,11 +8,12 @@
 
 class InteractableObject : public Updateable, public Renderable {
 public:
-	enum Type { Chandelier, Smoke };
+	enum Type { Chandelier, Smoke, Hideable };
 
 	InteractableObject(sf::Vector2f &position, GamestateManager &gsm);
 	virtual ~InteractableObject();
 
+	virtual void update(const sf::Time &deltaTime) = 0;
 	virtual void action() = 0;
 
 

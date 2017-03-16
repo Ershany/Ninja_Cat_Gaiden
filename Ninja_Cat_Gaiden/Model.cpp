@@ -1,6 +1,7 @@
 #include "Model.h"
 #include "Samurai.h"
 #include "Chandelier.h"
+#include "Hideable.h"
 
 #include <iostream>
 
@@ -22,6 +23,7 @@ void Model::init() {
 	// Add Interactable Objects
 	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((20 << 5) - 15, (29 << 5)), gsm));
 	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((59 << 5) - 15, (50 << 5)), gsm));
+	gsm.getCurrentState()->objects.push_back(new Hideable(sf::Vector2f((26 << 5), (36 << 5) - 12), gsm, player));
 }
 
 void Model::update(sf::Time deltaTime) {

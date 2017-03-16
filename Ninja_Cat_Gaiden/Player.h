@@ -24,7 +24,7 @@ public:
 	int getCurrStamina();
 	int getMaxStamina();
 
-	bool upHeld, downHeld, leftHeld, rightHeld;
+	bool upHeld, downHeld, leftHeld, rightHeld, fHeld;
 	bool leftMouseButtonPressed;
 	bool isDead;
 	bool isInvincible;

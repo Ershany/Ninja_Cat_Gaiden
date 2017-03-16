@@ -7,8 +7,8 @@ public:
 	Chandelier(sf::Vector2f &position, GamestateManager &gsm);
 	~Chandelier();
 
-	void update(const sf::Time &deltaTime) override;
-	void action() override;
+	virtual void update(const sf::Time &deltaTime) override;
+	virtual void action() override;
 private:
 	sf::Vector2i chainSize;
 	float intersectionLength;

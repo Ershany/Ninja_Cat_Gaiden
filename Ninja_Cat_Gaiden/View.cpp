@@ -89,6 +89,20 @@ void View::render() {
 		enemyIterator++;
 	}
 
+	// Draw the player
+	if (model->player->isDead) {
+		model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerDead.png"));
+	}
+	else {
+		if (model->player->facingRight) {
+			model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestRight.png"));
+		}
+		else {
+			model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestLeft.png"));
+		}
+	}
+	window.draw(model->player->sprite);
+
 	// Render the objects
 	std::vector<InteractableObject*>::iterator objectIterator = gsm.getCurrentState()->objects.begin();
 	while (objectIterator != gsm.getCurrentState()->objects.end()) {
@@ -104,25 +118,21 @@ void View::render() {
 				(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/chandelier.png"));
 			}
 		}
+		else if ((*objectIterator)->type == InteractableObject::Smoke) {
+			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/smoke.png"));
+		}
+		else if ((*objectIterator)->type == InteractableObject::Hideable) {
+			if ((*objectIterator)->activated) {
+				(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/shrub.png"));
+			}
+			else {
+				(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/shrubCat.png"));
+			}
+		}
 
 		window.draw((*objectIterator)->sprite);
 		objectIterator++;
 	}
-
-	// Draw the player
-	if (model->player->isDead) {
-		model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerDead.png"));
-	}
-	else {
-		if (model->player->facingRight) {
-			model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestRight.png"));
-		}
-		else {
-			model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestLeft.png"));
-		}
-	}
-
-	window.draw(model->player->sprite);
 
 	hud->draw();
 

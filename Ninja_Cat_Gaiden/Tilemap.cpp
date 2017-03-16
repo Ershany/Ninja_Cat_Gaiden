@@ -112,7 +112,9 @@ sf::Vector2f Tilemap::getOffset() {
 
 Tile* Tilemap::getTileByIndex(int row, int col) {
 	if (row < 0 || row >= mapSize.y || col < 0 || col >= mapSize.x) {
+#if DEBUG
 		std::cout << "Row/Column Index Is Out Of Bounds: Can't Access" << std::endl;
+#endif
 		return NULL;
 	}
 	return &(tiles[row][col]);
@@ -133,7 +135,9 @@ bool Tilemap::isSolidByIndex(int row, int col) {
 
 Tile* Tilemap::getTileByCoordinates(int x, int y) {
 	if (y < 0 || y >= mapSize.y << 5 || x < 0 || x >= mapSize.x << 5) {
+#if DEBUG
 		std::cout << "Row/Column Index Is Out Of Bounds: Can't Access" << std::endl;
+#endif
 		return NULL;
 	}
 	return &(tiles[y >> 5][x >> 5]);

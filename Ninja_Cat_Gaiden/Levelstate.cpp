@@ -39,6 +39,9 @@ void Levelstate::keyPressed(int keycode) {
 	case sf::Keyboard::Left:
 		player->leftHeld = true;
 		break;
+	case sf::Keyboard::F:
+		player->fHeld = true;
+		break;
 	}
 }
 
@@ -59,6 +62,9 @@ void Levelstate::keyReleased(int keycode) {
 	case sf::Keyboard::A:
 	case sf::Keyboard::Left:
 		player->leftHeld = false;
+		break;
+	case sf::Keyboard::F:
+		player->fHeld = false;
 		break;
 	}
 }
