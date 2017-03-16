@@ -91,7 +91,9 @@ void View::render() {
 
 	// Draw the player
 	if (model->player->isDead) {
-		model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerDead.png"));
+		model->player->deadSprite.setTexture(textureManager.getTexture("Resources/Player/playerDead.png"));
+		model->player->deadSprite.setPosition(model->player->sprite.getPosition() + sf::Vector2f(0.0f, 32.0f));
+		window.draw(model->player->deadSprite);
 	}
 	else {
 		if (model->player->facingRight) {
@@ -100,8 +102,8 @@ void View::render() {
 		else {
 			model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestLeft.png"));
 		}
+		window.draw(model->player->sprite);
 	}
-	window.draw(model->player->sprite);
 
 	// Render the objects
 	std::vector<InteractableObject*>::iterator objectIterator = gsm.getCurrentState()->objects.begin();

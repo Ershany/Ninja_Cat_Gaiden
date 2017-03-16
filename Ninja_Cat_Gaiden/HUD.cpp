@@ -41,6 +41,20 @@ void HUD::draw() {
 	if (model->player->hidden) {
 		window->draw(hiddenInfo);
 	}
+
+	// Check if the game is over
+	if (model->gsm.getCurrentState()->gameover) {
+		if (model->player->isDead) {
+			gameover.setTexture(textureManager->getTexture("Resources/HUD/wasted.png"));
+			gameover.setPosition(430, 200);
+		}
+		else {
+			gameover.setTexture(textureManager->getTexture("Resources/HUD/spotted.png"));
+			gameover.setPosition(425, 200);
+		}
+		// Finally draw the gameover HUD
+		window->draw(gameover);
+	}
 }
 
 void HUD::setStats() {

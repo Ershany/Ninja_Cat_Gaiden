@@ -20,6 +20,7 @@ public:
 	sf::Text hiddenInfo;
 	sf::Sprite hudMain;
 	sf::Sprite item;
+	sf::Sprite gameover;
 
 	void draw();
 	void setStats();

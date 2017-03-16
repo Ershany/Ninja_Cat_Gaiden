@@ -34,6 +34,8 @@ public:
 	std::vector<Projectile*> projectiles;
 	std::vector<Enemy*> enemies;
 	std::vector<InteractableObject*> objects;
+
+	bool gameover;
 protected:
 	Tilemap *map;
 	TextureManager *textureManager;

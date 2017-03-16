@@ -13,6 +13,11 @@ Levelstate::~Levelstate() {
 }
 
 void Levelstate::update(const sf::Time &deltaTime) {
+	// Check if the player is dead, and if so end the game
+	if (player->isDead) {
+		gameover = true;
+	}
+
 	player->update(deltaTime);
 	Gamestate::update(deltaTime);
 }

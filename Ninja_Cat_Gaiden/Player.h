@@ -33,6 +33,8 @@ public:
 	bool facingRight;
 	sf::Vector2f collisionPoints[10]; // Used for collision detection
 	sf::Vector2u size;
+
+	sf::Sprite deadSprite;
 private:
 	void updateVelocity(const sf::Time &deltaTime);
 	void updatePosition(const sf::Time &deltaTime);

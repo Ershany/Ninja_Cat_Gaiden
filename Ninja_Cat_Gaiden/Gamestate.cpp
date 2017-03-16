@@ -10,6 +10,7 @@ Gamestate::Gamestate(Tilemap *map, Camera *camera, TextureManager *textureManage
 	this->map = map;
 	this->camera = camera;
 	this->textureManager = textureManager;
+	this->gameover = false;
 }
 
 Gamestate::~Gamestate() {
@@ -33,11 +34,13 @@ Gamestate::~Gamestate() {
 }
 
 void Gamestate::update(const sf::Time &deltaTime) {
-	map->update(deltaTime);
-	updateProjectiles(deltaTime);
-	updateEnemies(deltaTime);
-	updateObjects(deltaTime);
-	camera->update(deltaTime);
+	if (!gameover) {
+		map->update(deltaTime);
+		updateProjectiles(deltaTime);
+		updateEnemies(deltaTime);
+		updateObjects(deltaTime);
+		camera->update(deltaTime);
+	}
 }
 
 void Gamestate::render() {
