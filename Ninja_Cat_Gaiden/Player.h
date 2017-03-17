@@ -26,6 +26,7 @@ public:
 	int getMaxStamina();
 
 	bool upHeld, downHeld, leftHeld, rightHeld, fHeld;
+	bool shouldMelee;
 	bool leftMouseButtonPressed;
 	bool isDead;
 	bool isInvincible;
@@ -38,12 +39,17 @@ public:
 	Inventory inventory;
 	bool transitioningToNextLevel;
 	int currentLevel;
+	float meleeRange;
+
+	int score;
+	int meleeKillScore, rangeKillScore, environmentKillScore, spikeDamageScoreDeduction, collectiblePickupScore;
 private:
 	void updateVelocity(const sf::Time &deltaTime);
 	void updatePosition(const sf::Time &deltaTime);
 	void updateCollisionPoints();
 	void move(float x, float y);
 	void checkProjectileShoot(const sf::Time &deltaTime);
+	void checkMelee(const sf::Time &deltaTime);
 	void checkTileDamage(const sf::Time &deltaTime);
 	void takeDamage(int amount, const sf::Time &deltaTime);
 	/* Determines if the player can jump, and sets the boolean "canJump" accordingly */

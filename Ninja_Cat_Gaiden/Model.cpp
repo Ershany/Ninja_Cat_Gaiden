@@ -14,7 +14,6 @@
 Model::Model() {
 	// Initialize the opening gamestate
 	player = new Player(sf::Vector2f(7 << 5, 67 << 5), gsm);
-	score = 0;
 }
 
 Model::~Model() {
@@ -46,21 +45,21 @@ void Model::initLevel1() {
 void Model::initLevel2() {
 	// Add enemies
 	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((52 << 5), (307 << 5) + 2), gsm, player));
-	gsm.getCurrentState()->enemies[0]->maxMovement = 32 * 18;
+	gsm.getCurrentState()->enemies[0]->maxMovement = 18 << 5;
 	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((81 << 5), (307 << 5) + 2), gsm, player));
-	gsm.getCurrentState()->enemies[1]->maxMovement = 32 * 18;
+	gsm.getCurrentState()->enemies[1]->maxMovement = 18 << 5;
 	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((35 << 5), (283 << 5) + 2), gsm, player));
-	gsm.getCurrentState()->enemies[2]->maxMovement = 32 * 1;
+	gsm.getCurrentState()->enemies[2]->maxMovement = 1 << 5;
 	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((97 << 5), (202 << 5) + 2), gsm, player));
-	gsm.getCurrentState()->enemies[3]->maxMovement = 32 * 1;
+	gsm.getCurrentState()->enemies[3]->maxMovement = 1 << 5;
 	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((114 << 5), (151 << 5) + 2), gsm, player));
-	gsm.getCurrentState()->enemies[4]->maxMovement = 32 * 10;
+	gsm.getCurrentState()->enemies[4]->maxMovement = 10 << 5;
 	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((68 << 5), (137 << 5) + 2), gsm, player));
-	gsm.getCurrentState()->enemies[5]->maxMovement = 32 * 16;
+	gsm.getCurrentState()->enemies[5]->maxMovement = 16 << 5;
 	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((1 << 5), (129 << 5) + 2), gsm, player));
-	gsm.getCurrentState()->enemies[6]->maxMovement = 32 * 5;
+	gsm.getCurrentState()->enemies[6]->maxMovement = 5 << 5;
 	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((65 << 5), (51 << 5) + 2), gsm, player));
-	gsm.getCurrentState()->enemies[7]->maxMovement = 32 * 19;
+	gsm.getCurrentState()->enemies[7]->maxMovement = 19 << 5;
 
 	// Add Interactable Objects
 	gsm.getCurrentState()->objects.push_back(new ExitPortal(sf::Vector2f((5 << 5) + 13, (306 << 5) - 10), gsm, player));

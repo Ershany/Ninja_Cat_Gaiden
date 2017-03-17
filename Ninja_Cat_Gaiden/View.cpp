@@ -97,10 +97,20 @@ void View::render() {
 	}
 	else {
 		if (model->player->facingRight) {
-			model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestRight.png"));
+			if (model->player->leftMouseButtonPressed && model->player->inventory.currentSelectedItem == 0) {
+				model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerAttackRight.png"));
+			}
+			else {
+				model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestRight.png"));
+			}
 		}
 		else {
-			model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestLeft.png"));
+			if (model->player->leftMouseButtonPressed && model->player->inventory.currentSelectedItem == 0) {
+				model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerAttackLeft.png"));
+			}
+			else {
+				model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestLeft.png"));
+			}
 		}
 		window.draw(model->player->sprite);
 	}

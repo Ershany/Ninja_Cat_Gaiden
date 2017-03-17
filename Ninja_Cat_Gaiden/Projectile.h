@@ -19,12 +19,13 @@ public:
 	bool shouldRemove;
 	sf::Vector2f collisionPoints[4]; // Used for collision detection
 	Type type;
+
+	sf::Vector2u size;
 private:
 	void updateCollisionPoints();
 
 	GamestateManager &gsm;
 
-	sf::Vector2u size;
 	sf::Vector2f velocity;
 	sf::Vector2f velocityDrag;
 

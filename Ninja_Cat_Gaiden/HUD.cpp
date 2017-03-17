@@ -66,7 +66,7 @@ void HUD::draw() {
 
 void HUD::setStats() {
 	item.setTexture(textureManager->getTexture("Resources/Player/craftables/shuriken.png"));
-	score.setString(std::to_string(model->score));
+	score.setString(std::to_string(model->player->score));
 	hiddenInfo.setString("Hidden");
 	health.setSize(sf::Vector2f(280 * ((float)model->player->getCurrHealth() / (float)model->player->getMaxHealth()), 25));
 	stamina.setSize(sf::Vector2f(255 * ((float)model->player->getCurrStamina() / (float)model->player->getMaxStamina()), 15));

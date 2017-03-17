@@ -28,6 +28,7 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	this->fHeld = false;
 	this->hidden = false;
 	this->transitioningToNextLevel = false;
+	this->score = 0;
 
 	// Tweakable variables
 	this->speed.x = 64.0f; // Horizontal Speed 
@@ -41,6 +42,14 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	this->projectileSpeed = sf::Vector2f(1000.0f, 1000.0f);
 	this->projectileFreq = sf::milliseconds(500); // The rate at which a player can throw a projectile
 	this->invincibilityTime = sf::milliseconds(500); // The amount of time the player is invincible after getting hit
+	this->meleeRange = 55.0f * 55.0f; // Range at which the player can melee (Note: Should be squared so square root isn't required for a distance check)
+	
+	// Score information
+	this->meleeKillScore = 10;
+	this->rangeKillScore = 5; 
+	this->environmentKillScore = 30; 
+	this->spikeDamageScoreDeduction = 10; 
+	this->collectiblePickupScore = 5;
 
 	// Initialize required variables
 	downHeld = false; upHeld = false; rightHeld = false; leftHeld = false;
@@ -59,8 +68,10 @@ void Player::update(const sf::Time &deltaTime) {
 	}
 
 	// Check if the player is trying to shoot a projectile
-	if(!isDead)
+	if (!isDead) {
 		checkProjectileShoot(deltaTime);
+		checkMelee(deltaTime);
+	}
 	
 	// Make sure the player can jump if they are able to
 	if(!isDead)
@@ -304,6 +315,16 @@ void Player::checkProjectileShoot(const sf::Time &deltaTime) {
 
 		currentProjectileFreq = sf::milliseconds(0);
 		currentStamina -= 10;
+	}
+}
+
+void Player::checkMelee(const sf::Time &deltaTime) {
+	// Make sure that the katana is selected
+	if (inventory.currentSelectedItem == 0 && leftMouseButtonPressed) {
+		shouldMelee = true;
+	}
+	else {
+		shouldMelee = false;
 	}
 }
 

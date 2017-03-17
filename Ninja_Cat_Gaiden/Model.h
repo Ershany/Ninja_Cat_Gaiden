@@ -21,5 +21,5 @@ public:
 	GamestateManager gsm;
 	Player *player;
 	
-	int score;
+	//int score;
 };
