@@ -6,6 +6,8 @@
 #include "ContainerObj.h"
 #include "ChemicalObj.h"
 #include "HerbObj.h"
+#include "EnterPortal.h"
+#include "ExitPortal.h"
 
 #include <iostream>
 
@@ -29,6 +31,7 @@ void Model::init() {
 	gsm.getCurrentState()->enemies[3]->maxMovement = 480;
 
 	// Add Interactable Objects
+	gsm.getCurrentState()->objects.push_back(new ExitPortal(sf::Vector2f((7 << 5) + 13, (67 << 5)), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((20 << 5) - 15, (29 << 5)), gsm));
 	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((59 << 5) - 15, (50 << 5)), gsm));
 	gsm.getCurrentState()->objects.push_back(new Hideable(sf::Vector2f((23 << 5) - 6, (20 << 5) - 12), gsm, player));
@@ -37,6 +40,7 @@ void Model::init() {
 	gsm.getCurrentState()->objects.push_back(new ContainerObj(sf::Vector2f((90 << 5), (8 << 5)), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new ChemicalObj(sf::Vector2f((29 << 5), (40 << 5)), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new HerbObj(sf::Vector2f((15 << 5), (72 << 5)), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new EnterPortal(sf::Vector2f((95 << 5), (3 << 5)), gsm, player));
 }
 
 void Model::update(sf::Time deltaTime) {

@@ -138,6 +138,12 @@ void View::render() {
 		else if ((*objectIterator)->type == InteractableObject::Herb) {
 			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Collectibles/herb.png"));
 		}
+		else if ((*objectIterator)->type == InteractableObject::EnterPortal) {
+			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/enterPortal.png"));
+		}
+		else if ((*objectIterator)->type == InteractableObject::ExitPortal) {
+			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Tiles/exitPortal.png"));
+		}
 
 		window.draw((*objectIterator)->sprite);
 		objectIterator++;

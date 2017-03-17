@@ -166,6 +166,8 @@
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Defs.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnterPortal.cpp" />
+    <ClCompile Include="ExitPortal.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Gamestate.cpp" />
     <ClCompile Include="GamestateManager.cpp" />
@@ -197,6 +199,8 @@
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Defs.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnterPortal.h" />
+    <ClInclude Include="ExitPortal.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Gamestate.h" />
     <ClInclude Include="GamestateManager.h" />

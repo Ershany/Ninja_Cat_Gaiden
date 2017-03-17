@@ -8,7 +8,7 @@
 
 class InteractableObject : public Updateable, public Renderable {
 public:
-	enum Type { Chandelier, Smoke, Hideable, ScrapMetal, Container, Chemical, Herb };
+	enum Type { Chandelier, Smoke, Hideable, ScrapMetal, Container, Chemical, Herb, EnterPortal, ExitPortal };
 
 	InteractableObject(sf::Vector2f &position, GamestateManager &gsm);
 	virtual ~InteractableObject();
