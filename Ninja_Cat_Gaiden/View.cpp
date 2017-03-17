@@ -182,4 +182,31 @@ void View::render() {
 #endif
 
 	window.display();
+
+	checkForTransition();
+}
+
+void View::checkForTransition() {
+	if (model->player->transitioningToNextLevel) {
+		model->player->transitioningToNextLevel = false;
+		delete gsm.getCurrentState();
+
+		if (model->player->currentLevel == 1) {
+			// Tilemap, Camera, new state
+			Tilemap *tilemap = new Tilemap("Resources/Levels/level2.png", textureManager, window);
+			Camera *camera = new Camera(*(this->model->player), *tilemap, window);
+			model->player->position = sf::Vector2f(5 << 5, 307 << 5);
+			model->player->currentLevel = 2;
+			this->gsm.removeGamestate();
+			this->gsm.addGamestate(new Levelstate(tilemap, camera, &textureManager, model->player));
+			
+			model->initLevel2();
+		}
+		else if (model->player->currentLevel == 2) {
+
+		}
+		else {
+
+		}
+	}
 }

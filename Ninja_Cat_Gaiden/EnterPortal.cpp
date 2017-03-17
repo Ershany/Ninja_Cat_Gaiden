@@ -9,7 +9,9 @@ EnterPortal::EnterPortal(sf::Vector2f &position, GamestateManager &gsm, Player *
 	this->type = InteractableObject::Type::EnterPortal;
 
 	// Tweakable Variables
-	this->maxGrabLength = 40.0f * 40.0f; // The distance (radius) at which the player can grab the object (Note: Square it since the calucation doesnt sqrt)
+	this->size.x = 37;
+	this->size.y = 80;
+	this->maxGrabLength = 60.0f * 60.0f; // The distance (radius) at which the player can grab the object (Note: Square it since the calucation doesnt sqrt)
 }
 
 EnterPortal::~EnterPortal() {
@@ -24,5 +26,5 @@ void EnterPortal::update(const sf::Time &deltaTime) {
 }
 
 void EnterPortal::action(const sf::Time &deltaTime) {
-
+	player->transitioningToNextLevel = true;
 }

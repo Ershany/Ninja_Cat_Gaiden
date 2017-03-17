@@ -11,6 +11,7 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	: gsm(gsm)
 {
 	// Non-Tweakable Variables
+	this->currentLevel = 1;
 	this->isInvincible = false;
 	this->maxHealth = 100;
 	this->currentHealth = maxHealth;
@@ -26,6 +27,7 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	facingRight = true;
 	this->fHeld = false;
 	this->hidden = false;
+	this->transitioningToNextLevel = false;
 
 	// Tweakable variables
 	this->speed.x = 64.0f; // Horizontal Speed 

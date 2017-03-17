@@ -31,6 +31,9 @@ Gamestate::~Gamestate() {
 		delete (*enemyIterator);
 		enemyIterator++;
 	}
+
+	delete camera;
+	//delete this->getTilemap();
 }
 
 void Gamestate::update(const sf::Time &deltaTime) {

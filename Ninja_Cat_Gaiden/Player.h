@@ -36,6 +36,8 @@ public:
 	sf::Vector2u size;
 	sf::Sprite deadSprite;
 	Inventory inventory;
+	bool transitioningToNextLevel;
+	int currentLevel;
 private:
 	void updateVelocity(const sf::Time &deltaTime);
 	void updatePosition(const sf::Time &deltaTime);

@@ -5,7 +5,7 @@ Game::Game() {
 	model = new Model();
 	view = new View(model, model->gsm);
 	controller = new Controller(model, view);
-	model->init();
+	model->initLevel1();
 }
 
 Game::~Game() {

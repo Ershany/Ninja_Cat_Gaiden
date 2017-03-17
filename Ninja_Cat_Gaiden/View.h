@@ -11,6 +11,7 @@ public:
 	~View();
 	
 	void render();
+	void checkForTransition();
 	
 	Model *model;
 
