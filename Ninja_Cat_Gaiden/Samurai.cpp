@@ -10,8 +10,6 @@ Samurai::Samurai(sf::Vector2f &position, GamestateManager &gsm, Player *player)
 	this->type = Type::Samurai;
 	this->moving = true;
 	this->currentWaitTime = sf::milliseconds(0);
-	this->maxMovement = 5000.0f;
-	this->currentMovement = 0.0f;
 	
 	// Tweakable Variables
 	this->size.x = 67;
@@ -61,13 +59,16 @@ void Samurai::move(const sf::Time &deltaTime) {
 	Tilemap *map = gsm.getCurrentState()->getTilemap();
 
 	Tile* footCheckTile = NULL;
+	Tile* sideCheckTile = NULL;
 	if (facingRight) {
 		footCheckTile = map->getTileByCoordinates(position + sf::Vector2f(size.x + 1, size.y + 1));
+		sideCheckTile = map->getTileByCoordinates(position + sf::Vector2f(size.x + 1, size.y - 10));
 		// Move the samurai
 		position.x += speed.x * deltaTime.asSeconds();
 	}
 	else {
 		footCheckTile = map->getTileByCoordinates(position + sf::Vector2f(-1.0f, size.y + 1));
+		sideCheckTile = map->getTileByCoordinates(position + sf::Vector2f(-1.0f, size.y - 10));
 		// Move the samurai
 		position.x -= speed.x * deltaTime.asSeconds();
 	}
@@ -77,11 +78,13 @@ void Samurai::move(const sf::Time &deltaTime) {
 	// If it did then stop moving
 	if (currentMovement >= maxMovement) {
 		moving = false;
+		currentMovement = 0.0f;
 	}
 
 
-	if (!footCheckTile->getSolid()) {
+	if (!footCheckTile->getSolid() || sideCheckTile->getSolid()) {
 		moving = false;
+		currentMovement = 0.0f; // Reset movement since the samurai is forced to stop
 	}
 }
 

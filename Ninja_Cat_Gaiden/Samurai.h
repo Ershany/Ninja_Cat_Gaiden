@@ -9,11 +9,9 @@ public:
 
 	void update(const sf::Time &deltaTime) override;
 	bool moving;
-	float maxMovement;
 private:
 	int lengthPerSightCheck; // Smaller the value, the more accurate
 	float sightRange;
-	float currentMovement;
 
 	sf::Time waitTime, currentWaitTime;
 

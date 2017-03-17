@@ -20,7 +20,11 @@ public:
 	Type type;
 	bool facingRight;
 	bool alertOfPlayer;
+
+	float maxMovement;
 protected:
+	float currentMovement;
+
 	GamestateManager &gsm;
 	Player *player;
 
