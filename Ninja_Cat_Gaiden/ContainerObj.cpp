@@ -27,4 +27,5 @@ void ContainerObj::action(const sf::Time &deltaTime) {
 	shouldRemove = true;
 	// Add a container to the player's inventory
 	player->inventory.numContainer++;
+	player->score += player->collectiblePickupScore;
 }

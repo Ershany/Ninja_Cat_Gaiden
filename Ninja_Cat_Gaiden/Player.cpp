@@ -13,7 +13,7 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	// Non-Tweakable Variables
 	this->currentLevel = 1;
 	this->isInvincible = false;
-	this->maxHealth = 100;
+	this->maxHealth = 10;
 	this->currentHealth = maxHealth;
 	this->maxStamina = 100;
 	this->currentStamina = maxStamina;
@@ -47,8 +47,8 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	// Score information
 	this->meleeKillScore = 10;
 	this->rangeKillScore = 5; 
-	this->environmentKillScore = 30; 
-	this->spikeDamageScoreDeduction = 10; 
+	this->environmentKillScore = 25; 
+	this->damageScoreDeduction = 1; 
 	this->collectiblePickupScore = 5;
 
 	// Initialize required variables
@@ -338,6 +338,7 @@ void Player::shootSmokebomb(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vect
 
 void Player::takeDamage(int amount, const sf::Time &deltaTime) {
 	if(!isInvincible) {
+		score -= minimumNum(damageScoreDeduction * amount, currentHealth);
 		currentHealth -= amount;
 		isInvincible = true;
 		currentInvincibilityTime = sf::milliseconds(0);

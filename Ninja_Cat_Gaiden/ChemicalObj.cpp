@@ -27,4 +27,5 @@ void ChemicalObj::action(const sf::Time &deltaTime) {
 	shouldRemove = true;
 	// Add a chemical to the player's inventory
 	player->inventory.numChemical++;
+	player->score += player->collectiblePickupScore;
 }

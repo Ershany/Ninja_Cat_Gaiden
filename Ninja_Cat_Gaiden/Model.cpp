@@ -31,8 +31,8 @@ void Model::initLevel1() {
 
 	// Add Interactable Objects
 	gsm.getCurrentState()->objects.push_back(new ExitPortal(sf::Vector2f((7 << 5) + 13, (67 << 5)), gsm, player));
-	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((20 << 5) - 15, (29 << 5)), gsm));
-	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((59 << 5) - 15, (50 << 5)), gsm));
+	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((20 << 5) - 15, (29 << 5)), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((59 << 5) - 15, (50 << 5)), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new Hideable(sf::Vector2f((23 << 5) - 6, (20 << 5) - 12), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new ScrapMetalObj(sf::Vector2f((46 << 5), (59 << 5)), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new ScrapMetalObj(sf::Vector2f((23 << 5) + 16, (17 << 5)), gsm, player));
@@ -65,8 +65,8 @@ void Model::initLevel2() {
 	gsm.getCurrentState()->objects.push_back(new ExitPortal(sf::Vector2f((5 << 5) + 13, (306 << 5) - 10), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new Hideable(sf::Vector2f((51 << 5) - 16, (303 << 5) - 2), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new Hideable(sf::Vector2f((78 << 5) - 16, (51 << 5) - 10), gsm, player));
-	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((63 << 5) - 15, (301 << 5)), gsm));
-	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((5 << 5) - 15, (116 << 5)), gsm));
+	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((63 << 5) - 15, (301 << 5)), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((5 << 5) - 15, (116 << 5)), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new ScrapMetalObj(sf::Vector2f((60 << 5), (298 << 5)), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new ScrapMetalObj(sf::Vector2f((65 << 5), (298 << 5)), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new ScrapMetalObj(sf::Vector2f((70 << 5), (298 << 5)), gsm, player));

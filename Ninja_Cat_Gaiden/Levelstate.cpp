@@ -57,6 +57,7 @@ void Levelstate::update(const sf::Time &deltaTime) {
 			{
 				player->score += player->rangeKillScore;
 				(*enemyIter)->shouldRemove = true;
+				(*projectileIter)->shouldRemove = true;
 			}
 
 			enemyIter++;

@@ -5,9 +5,10 @@
 
 #include <iostream>
 
-Chandelier::Chandelier(sf::Vector2f &position, GamestateManager &gsm)
+Chandelier::Chandelier(sf::Vector2f &position, GamestateManager &gsm, Player *player)
 	: InteractableObject(position, gsm)
 {
+	this->player = player;
 	this->type = InteractableObject::Type::Chandelier;
 	this->velocity.x = 0;
 	this->velocity.y = 0;
@@ -57,6 +58,7 @@ void Chandelier::update(const sf::Time &deltaTime) {
 			sf::Vector2f result = (sf::Vector2f(position.x + 64, position.y + 48)) - (sf::Vector2f((*iterator)->position.x + (*iterator)->size.x / 2, (*iterator)->position.y + (*iterator)->size.y / 2));
 			if (length(result) < intersectionLength && (*iterator)->position.y > position.y + 62) {
 				(*iterator)->shouldRemove = true;
+				player->score += player->environmentKillScore;
 			}
 
 			iterator++;

@@ -42,7 +42,7 @@ public:
 	float meleeRange;
 
 	int score;
-	int meleeKillScore, rangeKillScore, environmentKillScore, spikeDamageScoreDeduction, collectiblePickupScore;
+	int meleeKillScore, rangeKillScore, environmentKillScore, damageScoreDeduction, collectiblePickupScore;
 private:
 	void updateVelocity(const sf::Time &deltaTime);
 	void updatePosition(const sf::Time &deltaTime);

@@ -4,7 +4,7 @@
 
 class Chandelier : public InteractableObject {
 public:
-	Chandelier(sf::Vector2f &position, GamestateManager &gsm);
+	Chandelier(sf::Vector2f &position, GamestateManager &gsm, Player *player);
 	~Chandelier();
 
 	virtual void update(const sf::Time &deltaTime) override;
@@ -18,4 +18,6 @@ private:
 	float maxSpeed;
 	int collisionTune;
 	bool onGround;
+
+	Player *player;
 };

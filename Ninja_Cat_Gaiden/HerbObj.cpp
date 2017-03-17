@@ -27,4 +27,5 @@ void HerbObj::action(const sf::Time &deltaTime) {
 	shouldRemove = true;
 	// Add a herb to the player's inventory
 	player->inventory.numHerb++;
+	player->score += player->collectiblePickupScore;
 }
