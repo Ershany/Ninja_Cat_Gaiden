@@ -23,14 +23,14 @@ void Tilemap::update(const sf::Time &deltaTime) {
 
 void Tilemap::render(const sf::Vector2f &renderPosition) {
 	// Calculate which tiles to render in the 2d array (bounds)
-	int startRow = ((int)renderPosition.y >> 5) - 2;
+	int startRow = ((int)renderPosition.y >> 5) - 10;
 	if (startRow < 0) startRow = 0;
-	int endRow = (startRow + (window.getSize().y >> 5)) + 4;
+	int endRow = (startRow + (window.getSize().y >> 5)) + 20;
 	if (endRow > mapSize.y) endRow = mapSize.y;
 
-	int startCol = ((int)renderPosition.x >> 5) - 2;
+	int startCol = ((int)renderPosition.x >> 5) - 20;
 	if (startCol < 0) startCol = 0;
-	int endCol = (startCol + (window.getSize().x >> 5)) + 4;
+	int endCol = (startCol + (window.getSize().x >> 5)) + 40;
 	if (endCol > mapSize.x) endCol = mapSize.x;
 
 	// Render the tiles using the calculated bounds

@@ -28,13 +28,14 @@ public:
 	bool isSolidByCoordinates(int row, int col);
 
 	sf::Vector2f getOffset();
+
+	sf::Vector2u mapSize;
 private:
 	void load(std::string levelPath);
 
 	TextureManager &textureManager;
 	sf::RenderWindow &window;
 	Tile** tiles;
-	sf::Vector2u mapSize;
 	sf::Vector2f mapOffset;
 };
 
