@@ -5,6 +5,7 @@
 #include "ScrapMetalObj.h"
 #include "ContainerObj.h"
 #include "ChemicalObj.h"
+#include "HerbObj.h"
 
 #include <iostream>
 
@@ -35,6 +36,7 @@ void Model::init() {
 	gsm.getCurrentState()->objects.push_back(new ScrapMetalObj(sf::Vector2f((23 << 5) + 16, (17 << 5)), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new ContainerObj(sf::Vector2f((90 << 5), (8 << 5)), gsm, player));
 	gsm.getCurrentState()->objects.push_back(new ChemicalObj(sf::Vector2f((29 << 5), (40 << 5)), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new HerbObj(sf::Vector2f((15 << 5), (72 << 5)), gsm, player));
 }
 
 void Model::update(sf::Time deltaTime) {

@@ -96,6 +96,9 @@
     <ClCompile Include="ChemicalObj.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HerbObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -180,6 +183,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ChemicalObj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HerbObj.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

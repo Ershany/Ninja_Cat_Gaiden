@@ -169,6 +169,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Gamestate.cpp" />
     <ClCompile Include="GamestateManager.cpp" />
+    <ClCompile Include="HerbObj.cpp" />
     <ClCompile Include="Hideable.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Gamestate.h" />
     <ClInclude Include="GamestateManager.h" />
+    <ClInclude Include="HerbObj.h" />
     <ClInclude Include="Hideable.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="InputManager.h" />

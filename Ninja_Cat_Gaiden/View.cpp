@@ -135,6 +135,9 @@ void View::render() {
 		else if ((*objectIterator)->type == InteractableObject::Chemical) {
 			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Collectibles/chemical.png"));
 		}
+		else if ((*objectIterator)->type == InteractableObject::Herb) {
+			(*objectIterator)->sprite.setTexture(textureManager.getTexture("Resources/Collectibles/herb.png"));
+		}
 
 		window.draw((*objectIterator)->sprite);
 		objectIterator++;

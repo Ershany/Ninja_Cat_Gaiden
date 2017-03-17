@@ -1,3 +1,8 @@
-﻿  Model.cpp
+﻿  Camera.cpp
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\camera.cpp(17): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\camera.cpp(19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\camera.cpp(23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\camera.cpp(26): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\camera.cpp(33): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
   Ninja_Cat_Gaiden.vcxproj -> C:\Users\Brady\documents\visual studio 2015\Projects\Ninja_Cat_Gaiden\Debug\Ninja_Cat_Gaiden.exe
   Ninja_Cat_Gaiden.vcxproj -> C:\Users\Brady\documents\visual studio 2015\Projects\Ninja_Cat_Gaiden\Debug\Ninja_Cat_Gaiden.pdb (Full PDB)
