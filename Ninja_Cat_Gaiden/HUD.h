@@ -18,6 +18,7 @@ public:
 	sf::RectangleShape stamina;
 	sf::Text score;
 	sf::Text hiddenInfo;
+	sf::Text equippedItemQuantity;
 	sf::Sprite hudMain;
 	sf::Sprite item;
 	sf::Sprite gameover;

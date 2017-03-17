@@ -5,6 +5,7 @@
 
 #include "Updateable.h"
 #include "Renderable.h"
+#include "Inventory.h"
 
 // Forward declaration to get around the circular reference
 class GamestateManager;
@@ -33,8 +34,8 @@ public:
 	bool facingRight;
 	sf::Vector2f collisionPoints[10]; // Used for collision detection
 	sf::Vector2u size;
-
 	sf::Sprite deadSprite;
+	Inventory inventory;
 private:
 	void updateVelocity(const sf::Time &deltaTime);
 	void updatePosition(const sf::Time &deltaTime);

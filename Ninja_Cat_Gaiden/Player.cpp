@@ -269,6 +269,9 @@ void Player::checkTileDamage(const sf::Time &deltaTime) {
 }
 
 void Player::checkProjectileShoot(const sf::Time &deltaTime) {
+	// Make sure the player has the right item selected
+	if (inventory.currentSelectedItem != 1 && inventory.currentSelectedItem != 2) return;
+
 	// Add to the current time since the player last threw a projectile
 	currentProjectileFreq += deltaTime;
 	if (leftMouseButtonPressed && currentProjectileFreq >= projectileFreq && currentStamina >= 10) {
@@ -276,8 +279,27 @@ void Player::checkProjectileShoot(const sf::Time &deltaTime) {
 		sf::Vector2f mousePosFloat(mousePos.x, mousePos.y);
 		sf::Vector2f shootPosition = sprite.getPosition();
 		sf::Vector2f direction = normalize(mousePosFloat - shootPosition);
-		//shootShuriken(sf::Vector2u(16, 16), direction * projectileSpeed);
-		shootSmokebomb(sf::Vector2u(16, 16), direction * projectileSpeed);
+	
+		// Use the right item that is selected
+		if (inventory.currentSelectedItem == 1) { // Shuriken
+			// Make sure the player has a shuriken left
+			if (inventory.numShurikens > 0) {
+				shootShuriken(sf::Vector2u(16, 16), direction * projectileSpeed);
+				
+				// Take away one shuriken from the player
+				inventory.numShurikens--;
+			}		
+		}
+		else if (inventory.currentSelectedItem == 2) { // Smokebomb
+			// Make sure the player has a smokebomb left
+			if (inventory.numSmokebombs > 0) {
+				shootSmokebomb(sf::Vector2u(16, 16), direction * projectileSpeed);
+
+				// Take away one smokebomb from the player
+				inventory.numSmokebombs--;
+			}
+		}
+
 		currentProjectileFreq = sf::milliseconds(0);
 		currentStamina -= 10;
 	}

@@ -12,6 +12,4 @@ public:
 	virtual void action(const sf::Time &deltaTime) override;
 
 	sf::Vector2u size;
-private:
-	Player *player;
 };

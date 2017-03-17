@@ -26,5 +26,5 @@ void ScrapMetalObj::update(const sf::Time &deltaTime) {
 void ScrapMetalObj::action(const sf::Time &deltaTime) {
 	shouldRemove = true;
 	// Add a scrap metal to the player's inventory
-
+	player->inventory.numScrapMetal++;
 }

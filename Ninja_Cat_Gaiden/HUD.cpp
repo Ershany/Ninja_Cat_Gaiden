@@ -1,5 +1,7 @@
 #include "HUD.h"
 
+#include <iostream>
+
 HUD::HUD(Model* m, sf::RenderWindow* w, TextureManager* t) {
 	this->model = m;
 	this->window = w;
@@ -25,7 +27,11 @@ HUD::HUD(Model* m, sf::RenderWindow* w, TextureManager* t) {
 	hiddenInfo.setCharacterSize(20);
 	hiddenInfo.setPosition(sf::Vector2f(1100, 25));
 
-	//item.setScale(sf::Vector2f(3, 3));
+	equippedItemQuantity.setFont(centuryGothic);
+	equippedItemQuantity.setFillColor(sf::Color::White);
+	equippedItemQuantity.setCharacterSize(20);
+	equippedItemQuantity.setPosition(sf::Vector2f(67, 545));
+
 	item.setPosition(sf::Vector2f(45, 570));
 }
 
@@ -33,6 +39,7 @@ void HUD::draw() {
 	this->setStats();
 
 	window->draw(item);
+	window->draw(equippedItemQuantity);
 	window->draw(health);
 	window->draw(stamina);
 	window->draw(score);
@@ -63,6 +70,21 @@ void HUD::setStats() {
 	hiddenInfo.setString("Hidden");
 	health.setSize(sf::Vector2f(280 * ((float)model->player->getCurrHealth() / (float)model->player->getMaxHealth()), 25));
 	stamina.setSize(sf::Vector2f(255 * ((float)model->player->getCurrStamina() / (float)model->player->getMaxStamina()), 15));
+
+	switch (model->player->inventory.currentSelectedItem) {
+	case 0:
+		item.setTexture(textureManager->getTexture("Resources/Player/craftables/katana.png"));
+		equippedItemQuantity.setString("");
+		break;
+	case 1:
+		item.setTexture(textureManager->getTexture("Resources/Player/craftables/shuriken.png"));
+		equippedItemQuantity.setString("x" + std::to_string(model->player->inventory.numShurikens));
+		break;
+	case 2:
+		item.setTexture(textureManager->getTexture("Resources/Player/craftables/smokeBomb.png"));
+		equippedItemQuantity.setString("x" + std::to_string(model->player->inventory.numSmokebombs));
+		break;
+	}
 }
 
 HUD::~HUD() {}

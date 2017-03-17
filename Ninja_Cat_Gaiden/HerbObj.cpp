@@ -25,6 +25,6 @@ void HerbObj::update(const sf::Time &deltaTime) {
 
 void HerbObj::action(const sf::Time &deltaTime) {
 	shouldRemove = true;
-	// Add a scrap metal to the player's inventory
-
+	// Add a herb to the player's inventory
+	player->inventory.numHerb++;
 }

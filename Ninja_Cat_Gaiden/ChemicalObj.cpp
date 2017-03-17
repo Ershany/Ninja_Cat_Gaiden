@@ -25,6 +25,6 @@ void ChemicalObj::update(const sf::Time &deltaTime) {
 
 void ChemicalObj::action(const sf::Time &deltaTime) {
 	shouldRemove = true;
-	// Add a scrap metal to the player's inventory
-
+	// Add a chemical to the player's inventory
+	player->inventory.numChemical++;
 }

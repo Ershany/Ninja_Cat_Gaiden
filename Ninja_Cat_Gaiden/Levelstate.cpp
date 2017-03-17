@@ -47,6 +47,12 @@ void Levelstate::keyPressed(int keycode) {
 	case sf::Keyboard::F:
 		player->fHeld = true;
 		break;
+	case sf::Keyboard::Q:
+		player->inventory.changeSelectedItem(-1);
+		break;
+	case sf::Keyboard::E:
+		player->inventory.changeSelectedItem(1);
+		break;
 	}
 }
 
