@@ -84,6 +84,34 @@ void Model::initLevel2() {
 	gsm.getCurrentState()->objects.push_back(new EnterPortal(sf::Vector2f((146 << 5), (18 << 5)), gsm, player));
 }
 
+void Model::initLevel3() {
+	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((11 << 5), (16 << 5) + 2), gsm, player));
+	gsm.getCurrentState()->enemies[0]->maxMovement = 10 << 5;
+	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((40 << 5), (10 << 5) + 2), gsm, player));
+	gsm.getCurrentState()->enemies[0]->maxMovement = 20 << 5;
+	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((21 << 5), (33 << 5) + 2), gsm, player));
+	gsm.getCurrentState()->enemies[0]->maxMovement = 25 << 5;
+	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((22 << 5), (51 << 5) + 2), gsm, player));
+	gsm.getCurrentState()->enemies[0]->maxMovement = 10 << 5;
+	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((53 << 5), (51 << 5) + 2), gsm, player));
+	gsm.getCurrentState()->enemies[0]->maxMovement = 20 << 5;
+	gsm.getCurrentState()->enemies.push_back(new Samurai(sf::Vector2f((30 << 5), (68 << 5) + 2), gsm, player));
+	gsm.getCurrentState()->enemies[0]->maxMovement = 30 << 5;
+
+	//Add Interactable Objects    same    - 1
+	gsm.getCurrentState()->objects.push_back(new ExitPortal(sf::Vector2f((3 << 5) + 13, (5 << 5) - 10), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new Hideable(sf::Vector2f((33 << 5) - 16, (33 << 5) - 10), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new Hideable(sf::Vector2f((32 << 5) - 16, (51 << 5) - 10), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new Hideable(sf::Vector2f((62 << 5) - 16, (51 << 5) - 10), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new Hideable(sf::Vector2f((31 << 5) - 16, (68 << 5) - 10), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new Hideable(sf::Vector2f((55 << 5) - 16, (68 << 5) - 10), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new Hideable(sf::Vector2f((77 << 5) - 16, (68 << 5) - 10), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((33 << 5) - 15, (42 << 5)), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((48 << 5) - 15, (42 << 5)), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new Chandelier(sf::Vector2f((62 << 5) - 15, (42 << 5)), gsm, player));
+	gsm.getCurrentState()->objects.push_back(new EnterPortal(sf::Vector2f((95 << 5), (96 << 5)), gsm, player));
+}
+
 void Model::update(sf::Time deltaTime) {
 	gsm.update(deltaTime);
 }

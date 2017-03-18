@@ -11,7 +11,7 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	: gsm(gsm)
 {
 	// Non-Tweakable Variables
-	this->currentLevel = 1;
+	this->currentLevel = 2; // Should be 1
 	this->isInvincible = false;
 	this->maxHealth = 10;
 	this->currentHealth = maxHealth;

@@ -213,9 +213,18 @@ void View::checkForTransition() {
 			model->initLevel2();
 		}
 		else if (model->player->currentLevel == 2) {
+			// Tilemap, Camera, new state
+			Tilemap *tilemap = new Tilemap("Resources/Levels/level3.png", textureManager, window);
+			Camera *camera = new Camera(*(this->model->player), *tilemap, window);
+			model->player->position = sf::Vector2f(3 << 5, 6 << 5);
+			model->player->currentLevel = 3;
+			this->gsm.removeGamestate();
+			this->gsm.addGamestate(new Levelstate(tilemap, camera, &textureManager, model->player));
 
+			model->initLevel3();
 		}
 		else {
+			// The player beat the game
 
 		}
 	}

@@ -13,6 +13,7 @@ public:
 	// Must be called after the model, view, and controller are setup
 	void initLevel1();
 	void initLevel2();
+	void initLevel3();
 	void update(sf::Time deltaTime);
 	
 	void setGSM(GamestateManager &gsm);
