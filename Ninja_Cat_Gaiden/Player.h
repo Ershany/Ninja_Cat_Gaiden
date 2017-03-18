@@ -75,7 +75,10 @@ private:
 	sf::Vector2f projectileSpeed;
 
 	sf::Time invincibilityTime, currentInvincibilityTime;
+	int healAmount;
 
+	sf::Time scoreDecay, currentScoreDecay;
+	int scoreDecayAmount;
 
 	GamestateManager &gsm;
 };

@@ -29,6 +29,7 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	this->hidden = false;
 	this->transitioningToNextLevel = false;
 	this->score = 0;
+	this->currentScoreDecay = sf::milliseconds(0);
 
 	// Tweakable variables
 	this->speed.x = 64.0f; // Horizontal Speed 
@@ -43,7 +44,10 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	this->projectileFreq = sf::milliseconds(500); // The rate at which a player can throw a projectile
 	this->invincibilityTime = sf::milliseconds(500); // The amount of time the player is invincible after getting hit
 	this->meleeRange = 55.0f * 55.0f; // Range at which the player can melee (Note: Should be squared so square root isn't required for a distance check)
-	
+	this->healAmount = 3;
+	this->scoreDecay = sf::milliseconds(8500);
+	this->scoreDecayAmount = 1;
+
 	// Score information
 	this->meleeKillScore = 10;
 	this->rangeKillScore = 5; 
@@ -79,6 +83,22 @@ void Player::update(const sf::Time &deltaTime) {
 
 	if (currentStamina < maxStamina)
 		currentStamina++;
+
+	// Check if the player trying to drink a health potion
+	if (leftMouseButtonPressed && inventory.currentSelectedItem == 3 && inventory.numHealthPotions > 0) {
+		inventory.numHealthPotions--;
+		currentHealth += healAmount;
+		if (currentHealth > maxHealth) {
+			currentHealth = maxHealth;
+		}
+	}
+
+	// Check for score decay
+	currentScoreDecay += deltaTime;
+	if (currentScoreDecay >= scoreDecay) {
+		score -= scoreDecayAmount;
+		currentScoreDecay = sf::milliseconds(0);
+	}
 
 	// Update the player's velocity and position
 	updateVelocity(deltaTime);

@@ -84,6 +84,14 @@ void HUD::setStats() {
 		item.setTexture(textureManager->getTexture("Resources/Player/craftables/smokeBomb.png"));
 		equippedItemQuantity.setString("x" + std::to_string(model->player->inventory.numSmokebombs));
 		break;
+	case 3:
+		item.setTexture(textureManager->getTexture("Resources/Player/craftables/healthPotion.png"));
+		equippedItemQuantity.setString("x" + std::to_string(model->player->inventory.numHealthPotions));
+		break;
+	case 4:
+		item.setTexture(textureManager->getTexture("Resources/Player/craftables/camoPotion.png"));
+		equippedItemQuantity.setString("x" + std::to_string(model->player->inventory.numCamoPotions));
+		break;
 	}
 }
 

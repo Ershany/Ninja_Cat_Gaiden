@@ -48,7 +48,7 @@ void Levelstate::update(const sf::Time &deltaTime) {
 	std::vector<Projectile*>::iterator projectileIter = projectiles.begin();
 	while (projectileIter != projectiles.end()) {
 		// Make sure it is a shuriken
-		if ((*projectileIter)->type != Projectile::Type::Shuriken) projectileIter++;
+		if ((*projectileIter)->type != Projectile::Type::Shuriken) { projectileIter++; continue; }
 
 		std::vector<Enemy*>::iterator enemyIter = enemies.begin();
 		while (enemyIter != enemies.end()) {

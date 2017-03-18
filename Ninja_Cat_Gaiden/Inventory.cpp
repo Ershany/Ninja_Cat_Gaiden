@@ -5,7 +5,7 @@
 Inventory::Inventory() {
 	// Non tweakable variables
 	this->currentSelectedItem = 0;
-	this->numOfUseableItems = 3;
+	this->numOfUseableItems = 5;
 
 	// Crafting Collectibles
 	this->numChemical = 0;
@@ -14,8 +14,10 @@ Inventory::Inventory() {
 	this->numScrapMetal = 0;
 
 	// Crafted Items
-	this->numShurikens = 3;
-	this->numSmokebombs = 2;
+	this->numShurikens = 2;
+	this->numSmokebombs = 1;
+	this->numCamoPotions = 1;
+	this->numHealthPotions = 1;
 	this->numKatana = -1;
 }
 
