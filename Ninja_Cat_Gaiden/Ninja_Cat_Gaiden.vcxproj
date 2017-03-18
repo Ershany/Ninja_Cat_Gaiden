@@ -164,6 +164,7 @@
     <ClCompile Include="CollectibleObject.cpp" />
     <ClCompile Include="ContainerObj.cpp" />
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="CraftingMenustate.cpp" />
     <ClCompile Include="Defs.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnterPortal.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="CollectibleObject.h" />
     <ClInclude Include="ContainerObj.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="CraftingMenustate.h" />
     <ClInclude Include="Defs.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnterPortal.h" />

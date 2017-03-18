@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "CraftingMenustate.h"
 
 Controller::Controller(Model *model, View *view) {
 	this->model = model;
@@ -24,4 +25,10 @@ void Controller::inputs() {
 
 	// Update the input manager
 	inputManager->update();
+
+	// Check to see if the player is opening the crafting menu
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::T) && !model->gsm.getCurrentState()->inMenu) {
+		model->gsm.addGamestate(new CraftingMenustate(NULL, NULL, &view->textureManager, model->player));
+		model->gsm.getCurrentState()->inMenu = true;
+	}
 }
