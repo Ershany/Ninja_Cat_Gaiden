@@ -10,6 +10,9 @@ Levelstate::Levelstate(Tilemap *map, Camera *camera, TextureManager *textureMana
 	: Gamestate(map, camera, textureManager)
 {
 	this->player = player;
+
+	this->currentGameoverTime = sf::milliseconds(0);
+	this->gameoverTime = sf::milliseconds(3000);
 }
 
 Levelstate::~Levelstate() {
@@ -90,6 +93,14 @@ void Levelstate::update(const sf::Time &deltaTime) {
 	}
 
 	Gamestate::update(deltaTime);
+
+	// Check if the game is in an end state
+	if (gameover || player->isDead || player->gameFinished) {
+		currentGameoverTime += deltaTime;
+		if (currentGameoverTime >= gameoverTime) {
+			shouldRestart = true;
+		}
+	}
 }
 
 void Levelstate::render() {

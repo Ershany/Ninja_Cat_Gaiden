@@ -14,4 +14,6 @@ public:
 	void keyReleased(int keycode) override;
 private:
 	Player *player;
+
+	sf::Time gameoverTime, currentGameoverTime;
 };

@@ -1,9 +1,10 @@
 #include "CraftingMenustate.h"
 
-CraftingMenustate::CraftingMenustate(Tilemap *map, Camera *camera, TextureManager *textureManager, Player *player)
+CraftingMenustate::CraftingMenustate(Tilemap *map, Camera *camera, TextureManager *textureManager, Player *player, sf::RenderWindow *window)
 	: Gamestate(map, camera, textureManager)
 {	
 	this->player = player;
+	this->window = window;
 }
 
 CraftingMenustate::CraftingMenustate(TextureManager *textureManager, Player * player)

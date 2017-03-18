@@ -17,7 +17,7 @@ Model::Model() {
 }
 
 Model::~Model() {
-
+	
 }
 
 void Model::initLevel1() {

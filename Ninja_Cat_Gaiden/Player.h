@@ -49,6 +49,8 @@ public:
 	sf::Time currentCamoPotionTime, camoPotionTime;
 
 	sf::Time currentHealthPotionTime, healthPotionTime;
+
+	int maxHealth, currentHealth;
 private:
 	void updateVelocity(const sf::Time &deltaTime);
 	void updatePosition(const sf::Time &deltaTime);
@@ -64,7 +66,6 @@ private:
 	void shootShuriken(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag = sf::Vector2f(1.0f, 1.0f));
 	void shootSmokebomb(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vector2f &velocityDrag = sf::Vector2f(1.0f, 1.0f));
 
-	int maxHealth, currentHealth;
 	int maxStamina, currentStamina;
 
 	sf::Vector2f speed;

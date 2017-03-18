@@ -30,7 +30,7 @@ View::View(Model *model, GamestateManager &gsm)
 	this->gsm.addGamestate(new Levelstate(tilemap, camera, &textureManager, model->player));
 	model->initLevel1();
 
-	this->gsm.addGamestate(new Menustate(NULL, NULL, &textureManager));
+	this->gsm.addGamestate(new Menustate(NULL, NULL, &textureManager, &window));
 	this->gsm.getCurrentState()->inMenu = true;
 
 	model->setGSM(gsm); // Set the models gsm to the one we just initialized
@@ -205,12 +205,37 @@ void View::render() {
 	window.display();
 
 	checkForTransition();
+
+	if (model->gsm.getCurrentState()->shouldRestart) {
+		delete gsm.getCurrentState();
+		gsm.removeGamestate();
+		delete model->player;
+
+		model->player = new Player(sf::Vector2f(7 << 5, 67 << 5), gsm);
+		Tilemap *tilemap = new Tilemap("Resources/Levels/level1.png", textureManager, window);
+		Camera *camera = new Camera(*(this->model->player), *tilemap, window);
+		this->gsm.addGamestate(new Levelstate(tilemap, camera, &textureManager, model->player));
+		model->initLevel1();
+	}
 }
 
 void View::checkForTransition() {
 	if (model->player->transitioningToNextLevel) {
+		std::cout << "lol" << std::endl;
 		model->player->transitioningToNextLevel = false;
-		if (model->player->currentLevel == 1) {
+		if (model->player->currentLevel == 0) {
+			// Tilemap, Camera, new state
+			delete gsm.getCurrentState();
+			Tilemap *tilemap = new Tilemap("Resources/Levels/level1.png", textureManager, window);
+			Camera *camera = new Camera(*(this->model->player), *tilemap, window);
+			model->player->position = sf::Vector2f(7 << 5, 67 << 5);
+			model->player->currentLevel = 1;
+			this->gsm.removeGamestate();
+			this->gsm.addGamestate(new Levelstate(tilemap, camera, &textureManager, model->player));
+
+			model->initLevel1();
+		}
+		else if (model->player->currentLevel == 1) {
 			// Tilemap, Camera, new state
 			delete gsm.getCurrentState();
 			Tilemap *tilemap = new Tilemap("Resources/Levels/level2.png", textureManager, window);

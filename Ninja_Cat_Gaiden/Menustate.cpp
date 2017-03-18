@@ -1,9 +1,9 @@
 #include "Menustate.h"
 
-Menustate::Menustate(Tilemap *map, Camera *camera, TextureManager *textureManager) 
+Menustate::Menustate(Tilemap *map, Camera *camera, TextureManager *textureManager, sf::RenderWindow *window) 
 	: Gamestate(map, camera, textureManager)
 {
-
+	this->window = window;
 }
 
 Menustate::Menustate(TextureManager *textureManager) 

@@ -13,6 +13,7 @@ Gamestate::Gamestate(Tilemap *map, Camera *camera, TextureManager *textureManage
 	this->gameover = false;
 	this->inMenu = false;
 	this->popOffState = false;
+	this->shouldRestart = false;
 }
 
 Gamestate::~Gamestate() {

@@ -5,7 +5,7 @@
 
 class CraftingMenustate : public Gamestate {
 public:
-	CraftingMenustate(Tilemap *map, Camera *camera, TextureManager *textureManager, Player *player);
+	CraftingMenustate(Tilemap *map, Camera *camera, TextureManager *textureManager, Player *player, sf::RenderWindow *window);
 	CraftingMenustate(TextureManager *textureManager, Player * player);
 	~CraftingMenustate();
 
@@ -15,5 +15,6 @@ public:
 	void keyPressed(int keycode) override;
 	void keyReleased(int keycode) override;
 private:
+	sf::RenderWindow *window;
 	Player *player;
 };

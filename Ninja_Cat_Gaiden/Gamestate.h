@@ -39,6 +39,7 @@ public:
 
 	bool inMenu;
 	bool popOffState;
+	bool shouldRestart;
 protected:
 	Tilemap *map;
 	TextureManager *textureManager;

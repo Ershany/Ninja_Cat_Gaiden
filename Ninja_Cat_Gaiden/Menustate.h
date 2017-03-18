@@ -4,7 +4,7 @@
 
 class Menustate : public Gamestate {
 public:
-	Menustate(Tilemap *map, Camera *camera, TextureManager *textureManager);
+	Menustate(Tilemap *map, Camera *camera, TextureManager *textureManager, sf::RenderWindow *window);
 	Menustate(TextureManager *textureManager);
 	~Menustate();
 
@@ -13,4 +13,6 @@ public:
 
 	void keyPressed(int keycode) override;
 	void keyReleased(int keycode) override;
+private:
+	sf::RenderWindow *window;
 };
