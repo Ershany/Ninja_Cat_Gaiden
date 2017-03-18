@@ -128,8 +128,10 @@ void Player::update(const sf::Time &deltaTime) {
 	}
 
 	// Update the player's velocity and position
-	updateVelocity(deltaTime);
-	updatePosition(deltaTime);
+	if (!gameFinished) {
+		updateVelocity(deltaTime);
+		updatePosition(deltaTime);
+	}
 
 	// Update the sprites position (screen position)
 	sprite.setPosition(position - gsm.getCurrentState()->getTilemap()->getOffset());
@@ -137,7 +139,7 @@ void Player::update(const sf::Time &deltaTime) {
 
 void Player::updateVelocity(const sf::Time &deltaTime) {
 	// Get the horizontal input from the player
-	if (!isDead && !gameFinished) {
+	if (!isDead) {
 		float xChange = 0.0f;
 		if (leftHeld) {
 			xChange -= 1.0f;

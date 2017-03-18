@@ -114,6 +114,10 @@ void Model::initLevel3() {
 
 void Model::update(sf::Time deltaTime) {
 	gsm.update(deltaTime);
+
+	if (gsm.getCurrentState()->popOffState) {
+		gsm.removeGamestate();
+	}
 }
 
 void Model::setGSM(GamestateManager &gsm) {

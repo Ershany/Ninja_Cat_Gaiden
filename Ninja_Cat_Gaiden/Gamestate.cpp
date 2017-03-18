@@ -11,6 +11,8 @@ Gamestate::Gamestate(Tilemap *map, Camera *camera, TextureManager *textureManage
 	this->camera = camera;
 	this->textureManager = textureManager;
 	this->gameover = false;
+	this->inMenu = false;
+	this->popOffState = false;
 }
 
 Gamestate::~Gamestate() {
@@ -33,21 +35,23 @@ Gamestate::~Gamestate() {
 	}
 
 	delete camera;
-	//delete this->getTilemap();
 }
 
 void Gamestate::update(const sf::Time &deltaTime) {
 	if (!gameover) {
-		map->update(deltaTime);
+		if(map != NULL)
+			map->update(deltaTime);
 		updateProjectiles(deltaTime);
 		updateEnemies(deltaTime);
 		updateObjects(deltaTime);
-		camera->update(deltaTime);
+		if(camera != NULL)
+			camera->update(deltaTime);
 	}
 }
 
 void Gamestate::render() {
-	camera->render();
+	if(camera != NULL)
+		camera->render();
 }
 
 void Gamestate::keyPressed(int keycode) {

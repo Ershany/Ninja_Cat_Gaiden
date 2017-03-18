@@ -179,6 +179,7 @@
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Levelstate.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menustate.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="InteractableObject.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Levelstate.h" />
+    <ClInclude Include="Menustate.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Projectile.h" />

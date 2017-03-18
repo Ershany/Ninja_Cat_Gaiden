@@ -36,6 +36,9 @@ public:
 	std::vector<InteractableObject*> objects;
 
 	bool gameover;
+
+	bool inMenu;
+	bool popOffState;
 protected:
 	Tilemap *map;
 	TextureManager *textureManager;

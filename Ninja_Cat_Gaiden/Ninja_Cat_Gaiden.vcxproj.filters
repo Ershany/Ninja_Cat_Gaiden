@@ -108,6 +108,9 @@
     <ClCompile Include="ExitPortal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Menustate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -204,6 +207,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ExitPortal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menustate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

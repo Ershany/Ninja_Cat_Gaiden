@@ -1,6 +1,7 @@
 #include "View.h"
 
 #include "Levelstate.h"
+#include "Menustate.h"
 #include "Defs.h"
 #include <iostream>
 #include "Projectile.h"
@@ -27,6 +28,11 @@ View::View(Model *model, GamestateManager &gsm)
 	Tilemap *tilemap = new Tilemap("Resources/Levels/level1.png", textureManager, window);
 	Camera *camera = new Camera(*(this->model->player), *tilemap, window);
 	this->gsm.addGamestate(new Levelstate(tilemap, camera, &textureManager, model->player));
+	model->initLevel1();
+
+	this->gsm.addGamestate(new Menustate(NULL, NULL, &textureManager));
+	this->gsm.getCurrentState()->inMenu = true;
+
 	model->setGSM(gsm); // Set the models gsm to the one we just initialized
 }
 
@@ -90,30 +96,33 @@ void View::render() {
 	}
 
 	// Draw the player
-	if (model->player->isDead) {
-		model->player->deadSprite.setTexture(textureManager.getTexture("Resources/Player/playerDead.png"));
-		model->player->deadSprite.setPosition(model->player->sprite.getPosition() + sf::Vector2f(0.0f, 32.0f));
-		window.draw(model->player->deadSprite);
-	}
-	else {
-		if (model->player->facingRight) {
-			if (model->player->leftMouseButtonPressed && model->player->inventory.currentSelectedItem == 0) {
-				model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerAttackRight.png"));
-			}
-			else {
-				model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestRight.png"));
-			}
+	if (!gsm.getCurrentState()->inMenu) {
+		if (model->player->isDead) {
+			model->player->deadSprite.setTexture(textureManager.getTexture("Resources/Player/playerDead.png"));
+			model->player->deadSprite.setPosition(model->player->sprite.getPosition() + sf::Vector2f(0.0f, 32.0f));
+			window.draw(model->player->deadSprite);
 		}
 		else {
-			if (model->player->leftMouseButtonPressed && model->player->inventory.currentSelectedItem == 0) {
-				model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerAttackLeft.png"));
+			if (model->player->facingRight) {
+				if (model->player->leftMouseButtonPressed && model->player->inventory.currentSelectedItem == 0) {
+					model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerAttackRight.png"));
+				}
+				else {
+					model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestRight.png"));
+				}
 			}
 			else {
-				model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestLeft.png"));
+				if (model->player->leftMouseButtonPressed && model->player->inventory.currentSelectedItem == 0) {
+					model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerAttackLeft.png"));
+				}
+				else {
+					model->player->sprite.setTexture(textureManager.getTexture("Resources/Player/playerTestLeft.png"));
+				}
 			}
+			window.draw(model->player->sprite);
 		}
-		window.draw(model->player->sprite);
 	}
+	
 
 	// Render the objects
 	std::vector<InteractableObject*>::iterator objectIterator = gsm.getCurrentState()->objects.begin();
@@ -159,8 +168,10 @@ void View::render() {
 		objectIterator++;
 	}
 
-	hud->draw();
-
+	if (!gsm.getCurrentState()->inMenu) {
+		hud->draw();
+	}
+	
 #if DEBUG
 	// Draw Player Collision Points
 	for (int i = 0; i < sizeof(model->player->collisionPoints) / sizeof(sf::Vector2f); ++i) {
