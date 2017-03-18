@@ -66,6 +66,19 @@ void Levelstate::update(const sf::Time &deltaTime) {
 		projectileIter++;
 	}
 
+	// Check if the player is using a camo potion and act accordingly
+	std::vector<Enemy*>::iterator iterator = enemies.begin();
+	while (iterator != enemies.end()) {
+		if (player->camoPotion) {
+			(*iterator)->sightRange = (*iterator)->reducedSightRange;
+		}
+		else {
+			(*iterator)->sightRange = (*iterator)->maxSightRange;
+		}
+
+		iterator++;
+	}
+
 	Gamestate::update(deltaTime);
 }
 

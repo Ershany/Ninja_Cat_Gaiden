@@ -10,6 +10,9 @@ Enemy::Enemy(sf::Vector2f &position, GamestateManager &gsm, Player *player)
 	this->alertOfPlayer = false;
 	this->currentMovement = 0.0f;
 	this->maxMovement = 5000.0f;
+	this->maxSightRange = 300.0f;
+	this->reducedSightRange = 250.0f;
+	this->sightRange = maxSightRange;
 }
 
 Enemy::~Enemy() {

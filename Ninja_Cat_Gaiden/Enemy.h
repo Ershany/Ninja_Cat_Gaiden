@@ -22,6 +22,10 @@ public:
 	bool alertOfPlayer;
 
 	float maxMovement;
+
+	float maxSightRange;
+	float sightRange;
+	float reducedSightRange;
 protected:
 	float currentMovement;
 

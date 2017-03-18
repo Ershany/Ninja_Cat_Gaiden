@@ -17,7 +17,7 @@ Inventory::Inventory() {
 	this->numShurikens = 2;
 	this->numSmokebombs = 1;
 	this->numCamoPotions = 1;
-	this->numHealthPotions = 1;
+	this->numHealthPotions = 3;
 	this->numKatana = -1;
 }
 

@@ -43,6 +43,11 @@ public:
 
 	int score;
 	int meleeKillScore, rangeKillScore, environmentKillScore, damageScoreDeduction, collectiblePickupScore;
+
+	bool camoPotion;
+	sf::Time currentCamoPotionTime, camoPotionTime;
+
+	sf::Time currentHealthPotionTime, healthPotionTime;
 private:
 	void updateVelocity(const sf::Time &deltaTime);
 	void updatePosition(const sf::Time &deltaTime);

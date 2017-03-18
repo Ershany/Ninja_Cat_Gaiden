@@ -22,6 +22,7 @@ public:
 	sf::Sprite hudMain;
 	sf::Sprite item;
 	sf::Sprite gameover;
+	sf::Sprite camoInfo;
 
 	void draw();
 	void setStats();

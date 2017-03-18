@@ -18,7 +18,10 @@ Samurai::Samurai(sf::Vector2f &position, GamestateManager &gsm, Player *player)
 	this->speed.x = 250.0f;
 	this->speed.y = 0.0f;
 	this->waitTime = sf::milliseconds(3000);
-	this->sightRange = 645.0f;
+	this->maxSightRange = 645.0f;
+	this->reducedSightRange = 400.0f;
+
+	this->sightRange = maxSightRange;
 }
 
 Samurai::~Samurai() {

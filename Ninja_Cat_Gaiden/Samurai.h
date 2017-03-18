@@ -11,7 +11,6 @@ public:
 	bool moving;
 private:
 	int lengthPerSightCheck; // Smaller the value, the more accurate
-	float sightRange;
 
 	sf::Time waitTime, currentWaitTime;
 

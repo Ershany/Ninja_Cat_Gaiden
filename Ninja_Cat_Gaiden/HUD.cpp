@@ -10,6 +10,9 @@ HUD::HUD(Model* m, sf::RenderWindow* w, TextureManager* t) {
 	centuryGothic.loadFromFile("Resources/HUD/fonts/century_gothic.ttf");
 
 	hudMain.setTexture(textureManager->getTexture("Resources/HUD/hud-main.png"));
+	camoInfo.setTexture(textureManager->getTexture("Resources/Player/craftables/camoPotion.png"));
+	camoInfo.setScale(0.5f, 0.5f);
+	camoInfo.setPosition(10, 10);
 
 	health.setFillColor(sf::Color::Red);
 	health.setPosition(sf::Vector2f(145, 590));
@@ -47,6 +50,10 @@ void HUD::draw() {
 
 	if (model->player->hidden) {
 		window->draw(hiddenInfo);
+	}
+
+	if (model->player->camoPotion) {
+		window->draw(camoInfo);
 	}
 
 	// Check if the game is over

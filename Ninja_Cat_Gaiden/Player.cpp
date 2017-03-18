@@ -11,7 +11,7 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	: gsm(gsm)
 {
 	// Non-Tweakable Variables
-	this->currentLevel = 2; // Should be 1
+	this->currentLevel = 1;
 	this->isInvincible = false;
 	this->maxHealth = 10;
 	this->currentHealth = maxHealth;
@@ -30,6 +30,8 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	this->transitioningToNextLevel = false;
 	this->score = 0;
 	this->currentScoreDecay = sf::milliseconds(0);
+	this->currentHealthPotionTime = sf::milliseconds(0);
+	this->currentCamoPotionTime = sf::milliseconds(0);
 
 	// Tweakable variables
 	this->speed.x = 64.0f; // Horizontal Speed 
@@ -47,6 +49,9 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 	this->healAmount = 3;
 	this->scoreDecay = sf::milliseconds(8500);
 	this->scoreDecayAmount = 1;
+	this->camoPotion = false;
+	this->camoPotionTime = sf::milliseconds(15000);
+	this->healthPotionTime = sf::milliseconds(250);
 
 	// Score information
 	this->meleeKillScore = 10;
@@ -85,11 +90,26 @@ void Player::update(const sf::Time &deltaTime) {
 		currentStamina++;
 
 	// Check if the player trying to drink a health potion
-	if (leftMouseButtonPressed && inventory.currentSelectedItem == 3 && inventory.numHealthPotions > 0) {
+	if (leftMouseButtonPressed && inventory.currentSelectedItem == 3 && inventory.numHealthPotions > 0 && currentHealth < maxHealth && currentHealthPotionTime >= healthPotionTime) {
+		currentHealthPotionTime = sf::milliseconds(0);
 		inventory.numHealthPotions--;
 		currentHealth += healAmount;
 		if (currentHealth > maxHealth) {
 			currentHealth = maxHealth;
+		}
+	}
+	currentHealthPotionTime += deltaTime;
+
+	// Check if the player is in camo
+	if (leftMouseButtonPressed && inventory.currentSelectedItem == 4 && inventory.numCamoPotions > 0 && !camoPotion) {
+		inventory.numCamoPotions--;
+		camoPotion = true;
+	}
+	if (camoPotion) {
+		currentCamoPotionTime += deltaTime;
+		if (currentCamoPotionTime >= camoPotionTime) {
+			currentCamoPotionTime = sf::milliseconds(0);
+			camoPotion = 0;
 		}
 	}
 
