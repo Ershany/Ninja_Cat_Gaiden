@@ -1,47 +1,15 @@
-﻿  Player.cpp
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(40): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(194): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(195): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(332): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
-  Compiling...
-  View.cpp
-  Samurai.cpp
+﻿  Samurai.cpp
 c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\samurai.cpp(67): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
 c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\samurai.cpp(68): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
 c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\samurai.cpp(73): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
 c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\samurai.cpp(74): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
 c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\samurai.cpp(104): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  Model.cpp
+  Player.cpp
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(41): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(201): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(202): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\player.cpp(339): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Levelstate.cpp
-  Hideable.cpp
-  HUD.cpp
-  Controller.cpp
-  CollectibleObject.cpp
-  Camera.cpp
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\camera.cpp(17): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\camera.cpp(19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\camera.cpp(22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\camera.cpp(25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\camera.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\brady\documents\visual studio 2015\projects\ninja_cat_gaiden\ninja_cat_gaiden\camera.cpp(33): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
   Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  Smoke.cpp
-  ScrapMetalObj.cpp
-  Projectile.cpp
-  InteractableObject.cpp
-  InputManager.cpp
-  HerbObj.cpp
-  GamestateManager.cpp
-  Gamestate.cpp
-  Game.cpp
-  ExitPortal.cpp
-  EnterPortal.cpp
-  Enemy.cpp
-  ContainerObj.cpp
-  ChemicalObj.cpp
-  Chandelier.cpp
   Ninja_Cat_Gaiden.vcxproj -> C:\Users\Brady\documents\visual studio 2015\Projects\Ninja_Cat_Gaiden\Debug\Ninja_Cat_Gaiden.exe
   Ninja_Cat_Gaiden.vcxproj -> C:\Users\Brady\documents\visual studio 2015\Projects\Ninja_Cat_Gaiden\Debug\Ninja_Cat_Gaiden.pdb (Full PDB)

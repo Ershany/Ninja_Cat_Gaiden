@@ -12,6 +12,7 @@ Player::Player(sf::Vector2f &pos, GamestateManager &gsm)
 {
 	// Non-Tweakable Variables
 	this->currentLevel = 1;
+	this->gameFinished = false;
 	this->isInvincible = false;
 	this->maxHealth = 10;
 	this->currentHealth = maxHealth;
@@ -77,13 +78,13 @@ void Player::update(const sf::Time &deltaTime) {
 	}
 
 	// Check if the player is trying to shoot a projectile
-	if (!isDead) {
+	if (!isDead && !gameFinished) {
 		checkProjectileShoot(deltaTime);
 		checkMelee(deltaTime);
 	}
 	
 	// Make sure the player can jump if they are able to
-	if(!isDead)
+	if(!isDead && !gameFinished)
 		checkJump();
 
 	if (currentStamina < maxStamina)
@@ -113,11 +114,17 @@ void Player::update(const sf::Time &deltaTime) {
 		}
 	}
 
+	if (isDead) {
+		gameFinished = true;
+	}
+
 	// Check for score decay
-	currentScoreDecay += deltaTime;
-	if (currentScoreDecay >= scoreDecay) {
-		score -= scoreDecayAmount;
-		currentScoreDecay = sf::milliseconds(0);
+	if (!gameFinished) {
+		currentScoreDecay += deltaTime;
+		if (currentScoreDecay >= scoreDecay) {
+			score -= scoreDecayAmount;
+			currentScoreDecay = sf::milliseconds(0);
+		}
 	}
 
 	// Update the player's velocity and position
@@ -130,7 +137,7 @@ void Player::update(const sf::Time &deltaTime) {
 
 void Player::updateVelocity(const sf::Time &deltaTime) {
 	// Get the horizontal input from the player
-	if (!isDead) {
+	if (!isDead && !gameFinished) {
 		float xChange = 0.0f;
 		if (leftHeld) {
 			xChange -= 1.0f;

@@ -29,6 +29,7 @@ public:
 	bool shouldMelee;
 	bool leftMouseButtonPressed;
 	bool isDead;
+	bool gameFinished;
 	bool isInvincible;
 	bool hidden;
 	sf::Vector2i mousePos;

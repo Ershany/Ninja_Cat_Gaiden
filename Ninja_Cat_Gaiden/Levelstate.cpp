@@ -67,6 +67,7 @@ void Levelstate::update(const sf::Time &deltaTime) {
 	}
 
 	// Check if the player is using a camo potion and act accordingly
+	// Also check for if they are alert of the player
 	std::vector<Enemy*>::iterator iterator = enemies.begin();
 	while (iterator != enemies.end()) {
 		if (player->camoPotion) {
@@ -76,7 +77,16 @@ void Levelstate::update(const sf::Time &deltaTime) {
 			(*iterator)->sightRange = (*iterator)->maxSightRange;
 		}
 
+		if ((*iterator)->alertOfPlayer) {
+			gameover = true;
+		}
+
 		iterator++;
+	}
+
+	// Set the player's gameFinished status
+	if (gameover) {
+		player->gameFinished = true;
 	}
 
 	Gamestate::update(deltaTime);

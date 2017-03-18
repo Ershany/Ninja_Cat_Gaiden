@@ -199,10 +199,9 @@ void View::render() {
 void View::checkForTransition() {
 	if (model->player->transitioningToNextLevel) {
 		model->player->transitioningToNextLevel = false;
-		delete gsm.getCurrentState();
-
 		if (model->player->currentLevel == 1) {
 			// Tilemap, Camera, new state
+			delete gsm.getCurrentState();
 			Tilemap *tilemap = new Tilemap("Resources/Levels/level2.png", textureManager, window);
 			Camera *camera = new Camera(*(this->model->player), *tilemap, window);
 			model->player->position = sf::Vector2f(5 << 5, 307 << 5);
@@ -214,6 +213,7 @@ void View::checkForTransition() {
 		}
 		else if (model->player->currentLevel == 2) {
 			// Tilemap, Camera, new state
+			delete gsm.getCurrentState();
 			Tilemap *tilemap = new Tilemap("Resources/Levels/level3.png", textureManager, window);
 			Camera *camera = new Camera(*(this->model->player), *tilemap, window);
 			model->player->position = sf::Vector2f(3 << 5, 6 << 5);
@@ -225,7 +225,7 @@ void View::checkForTransition() {
 		}
 		else {
 			// The player beat the game
-
+			model->player->gameFinished = true;
 		}
 	}
 }

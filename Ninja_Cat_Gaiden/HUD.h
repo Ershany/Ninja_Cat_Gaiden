@@ -23,6 +23,7 @@ public:
 	sf::Sprite item;
 	sf::Sprite gameover;
 	sf::Sprite camoInfo;
+	sf::Sprite gameWon;
 
 	void draw();
 	void setStats();
