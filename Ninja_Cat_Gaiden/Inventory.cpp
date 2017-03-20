@@ -8,10 +8,10 @@ Inventory::Inventory() {
 	this->numOfUseableItems = 5;
 
 	// Crafting Collectibles
-	this->numChemical = 0;
-	this->numContainer = 0;
-	this->numHerb = 0;
-	this->numScrapMetal = 0;
+	this->numChemical = 3;
+	this->numContainer = 3;
+	this->numHerb = 3;
+	this->numScrapMetal = 3;
 
 	// Crafted Items
 	this->numShurikens = 2;

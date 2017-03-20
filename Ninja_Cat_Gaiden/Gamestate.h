@@ -2,6 +2,7 @@
 #define GAMESTATE_H
 
 #include <SFML\Graphics.hpp>
+#include <SFML\Audio\Music.hpp>
 #include <vector>
 
 #include "Tilemap.h"

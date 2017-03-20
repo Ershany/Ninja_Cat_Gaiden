@@ -1,0 +1,72 @@
+﻿  Camera.cpp
+Camera.cpp(17): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+Camera.cpp(19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+Camera.cpp(22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+Camera.cpp(25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+Camera.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+Camera.cpp(33): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+  Chandelier.cpp
+Chandelier.cpp(44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  ChemicalObj.cpp
+  CollectibleObject.cpp
+  ContainerObj.cpp
+  Controller.cpp
+  CraftingMenustate.cpp
+  Defs.cpp
+  Enemy.cpp
+  EnterPortal.cpp
+  ExitPortal.cpp
+  Game.cpp
+  Gamestate.cpp
+  GamestateManager.cpp
+  HerbObj.cpp
+  Hideable.cpp
+  HUD.cpp
+  InputManager.cpp
+  InteractableObject.cpp
+  Inventory.cpp
+  Compiling...
+  Levelstate.cpp
+  main.cpp
+  Menustate.cpp
+  Model.cpp
+  Player.cpp
+Player.cpp(41): warning C4305: '=': truncation from 'double' to 'float'
+Player.cpp(203): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Player.cpp(204): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Player.cpp(341): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Projectile.cpp
+  Samurai.cpp
+Samurai.cpp(67): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+Samurai.cpp(68): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+Samurai.cpp(73): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+Samurai.cpp(74): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+Samurai.cpp(104): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ScrapMetalObj.cpp
+  Smoke.cpp
+Smoke.cpp(18): warning C4018: '<': signed/unsigned mismatch
+Smoke.cpp(20): warning C4018: '<': signed/unsigned mismatch
+Smoke.cpp(21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+Smoke.cpp(53): warning C4018: '<': signed/unsigned mismatch
+Smoke.cpp(54): warning C4018: '<': signed/unsigned mismatch
+Smoke.cpp(55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  TextureManager.cpp
+  Tile.cpp
+  Tilemap.cpp
+Tilemap.cpp(17): warning C4018: '<': signed/unsigned mismatch
+Tilemap.cpp(18): warning C4018: '<': signed/unsigned mismatch
+Tilemap.cpp(29): warning C4018: '>': signed/unsigned mismatch
+Tilemap.cpp(34): warning C4018: '>': signed/unsigned mismatch
+Tilemap.cpp(59): warning C4018: '<': signed/unsigned mismatch
+Tilemap.cpp(61): warning C4018: '<': signed/unsigned mismatch
+Tilemap.cpp(89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+Tilemap.cpp(108): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+Tilemap.cpp(109): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+Tilemap.cpp(117): warning C4018: '>=': signed/unsigned mismatch
+Tilemap.cpp(140): warning C4018: '>=': signed/unsigned mismatch
+  View.cpp
+  Generating code
+  All 937 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Ninja_Cat_Gaiden.vcxproj -> C:\Users\Brady\documents\visual studio 2015\Projects\Ninja_Cat_Gaiden\Release\Ninja_Cat_Gaiden.exe
+  Ninja_Cat_Gaiden.vcxproj -> C:\Users\Brady\documents\visual studio 2015\Projects\Ninja_Cat_Gaiden\Release\Ninja_Cat_Gaiden.pdb (Full PDB)
