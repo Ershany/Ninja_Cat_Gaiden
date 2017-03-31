@@ -20,11 +20,11 @@ Menustate::~Menustate() {
 void Menustate::update(const sf::Time &deltaTime) {
 	sf::Mouse mouse;
 
-	if (mouse.getPosition().x > 550 && mouse.getPosition().x < 760 && mouse.getPosition().y > 370 && mouse.getPosition().y < 475)
+	if (mouse.getPosition(*window).x > 455 && mouse.getPosition(*window).x < 670 && mouse.getPosition(*window).y > 300 && mouse.getPosition(*window).y < 405)
 		play = true;
 	else
 		play = false;
-	if (mouse.getPosition().x > 585 && mouse.getPosition().x < 725 && mouse.getPosition().y > 500 && mouse.getPosition().y < 575)
+	if (mouse.getPosition(*window).x > 485 && mouse.getPosition(*window).x < 625 && mouse.getPosition(*window).y > 428 && mouse.getPosition(*window).y < 503)
 		quit = true;
 	else
 		quit = false;

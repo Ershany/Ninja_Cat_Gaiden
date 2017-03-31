@@ -66,22 +66,22 @@ void CraftingMenustate::update(const sf::Time &deltaTime) {
 
 	sf::Mouse mouse;
 
-	if (mouse.getPosition().x > 280 && mouse.getPosition().x < 385 && mouse.getPosition().y > 570 && mouse.getPosition().y < 623)
+	if (mouse.getPosition(*window).x > 203 && mouse.getPosition(*window).x < 308 && mouse.getPosition(*window).y > 500 && mouse.getPosition(*window).y < 553)
 		sBC = true;
 	else
 		sBC = false;
 
-	if (mouse.getPosition().x > 480 && mouse.getPosition().x < 585 && mouse.getPosition().y > 570 && mouse.getPosition().y < 623)
+	if (mouse.getPosition(*window).x > 403 && mouse.getPosition(*window).x < 508 && mouse.getPosition(*window).y > 500 && mouse.getPosition(*window).y < 553)
 		shC = true;
 	else
 		shC = false;
 
-	if (mouse.getPosition().x > 680 && mouse.getPosition().x < 785 && mouse.getPosition().y > 570 && mouse.getPosition().y < 623)
+	if (mouse.getPosition(*window).x > 603 && mouse.getPosition(*window).x < 708 && mouse.getPosition(*window).y > 500 && mouse.getPosition(*window).y < 553)
 		hPC = true;
 	else
 		hPC = false;
 
-	if (mouse.getPosition().x > 880 && mouse.getPosition().x < 985 && mouse.getPosition().y > 570 && mouse.getPosition().y < 623)
+	if (mouse.getPosition(*window).x > 803 && mouse.getPosition(*window).x < 908 && mouse.getPosition(*window).y > 500 && mouse.getPosition(*window).y < 553)
 		cPC = true;
 	else
 		cPC = false;
