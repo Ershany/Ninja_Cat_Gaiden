@@ -221,7 +221,6 @@ void View::render() {
 
 void View::checkForTransition() {
 	if (model->player->transitioningToNextLevel) {
-		std::cout << "lol" << std::endl;
 		model->player->transitioningToNextLevel = false;
 		if (model->player->currentLevel == 0) {
 			// Tilemap, Camera, new state
@@ -229,6 +228,7 @@ void View::checkForTransition() {
 			Tilemap *tilemap = new Tilemap("Resources/Levels/level1.png", textureManager, window);
 			Camera *camera = new Camera(*(this->model->player), *tilemap, window);
 			model->player->position = sf::Vector2f(7 << 5, 67 << 5);
+			model->player->updateCollisionPoints();
 			model->player->currentLevel = 1;
 			this->gsm.removeGamestate();
 			this->gsm.addGamestate(new Levelstate(tilemap, camera, &textureManager, model->player));
@@ -241,6 +241,7 @@ void View::checkForTransition() {
 			Tilemap *tilemap = new Tilemap("Resources/Levels/level2.png", textureManager, window);
 			Camera *camera = new Camera(*(this->model->player), *tilemap, window);
 			model->player->position = sf::Vector2f(5 << 5, 307 << 5);
+			model->player->updateCollisionPoints();
 			model->player->currentLevel = 2;
 			this->gsm.removeGamestate();
 			this->gsm.addGamestate(new Levelstate(tilemap, camera, &textureManager, model->player));
@@ -248,12 +249,12 @@ void View::checkForTransition() {
 			model->initLevel2();
 		}
 		else if (model->player->currentLevel == 2) {
-			std::cout << "Ran" << std::endl;
 			// Tilemap, Camera, new state
 			delete gsm.getCurrentState();
 			Tilemap *tilemap = new Tilemap("Resources/Levels/level3.png", textureManager, window);
 			Camera *camera = new Camera(*(this->model->player), *tilemap, window);
-			model->player->position = sf::Vector2f(3 << 5, 6 << 5);
+			model->player->position = sf::Vector2f(3 << 5, 5 << 5);
+			model->player->updateCollisionPoints();
 			model->player->currentLevel = 3;
 			this->gsm.removeGamestate();
 			this->gsm.addGamestate(new Levelstate(tilemap, camera, &textureManager, model->player));

@@ -24,6 +24,7 @@ public:
 	int getMaxHealth();
 	int getCurrStamina();
 	int getMaxStamina();
+	void updateCollisionPoints();
 
 	bool upHeld, downHeld, leftHeld, rightHeld, fHeld;
 	bool shouldMelee;
@@ -54,7 +55,6 @@ public:
 private:
 	void updateVelocity(const sf::Time &deltaTime);
 	void updatePosition(const sf::Time &deltaTime);
-	void updateCollisionPoints();
 	void move(float x, float y);
 	void checkProjectileShoot(const sf::Time &deltaTime);
 	void checkMelee(const sf::Time &deltaTime);

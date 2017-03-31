@@ -290,6 +290,10 @@ void Player::checkJump() {
 	Tile *middleFootTile = map->getTileByCoordinates(collisionPoints[7] + sf::Vector2f(0.0f, 1.0f));
 
 	// If one of them are solid, the player can jump
+	if (leftFootTile == NULL || rightFootTile == NULL || middleFootTile == NULL) {
+		std::cout << "NULL Tile" << std::endl;
+		return;
+	}
 	if (leftFootTile->getSolid() || rightFootTile->getSolid() || middleFootTile->getSolid()) {
 		lastWallCollision.x = (int)position.x;
 		lastWallCollision.y = (int)position.y;
@@ -323,6 +327,10 @@ void Player::checkTileDamage(const sf::Time &deltaTime) {
 	Tile *middleFootTile = map->getTileByCoordinates(collisionPoints[7]);
 
 	// Get the tile that deals the most damage, and then take that much damage
+	if (leftFootTile == NULL || rightFootTile == NULL || middleFootTile == NULL) {
+		std::cout << "Null Tile" << std::endl;
+		return;
+	}
 	if (leftFootTile->getDamaging() || rightFootTile->getDamaging() || middleFootTile->getDamaging()) {
 		int maxAmount = leftFootTile->getDamageAmount();
 		if (rightFootTile->getDamageAmount() > maxAmount) { maxAmount = rightFootTile->getDamageAmount(); }
