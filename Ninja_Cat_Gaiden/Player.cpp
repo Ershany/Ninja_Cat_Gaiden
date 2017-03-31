@@ -126,6 +126,8 @@ void Player::update(const sf::Time &deltaTime) {
 			currentScoreDecay = sf::milliseconds(0);
 		}
 	}
+	// Ensure that score is always positive (>= 0)
+	if (score < 0) score = 0;
 
 	// Update the player's velocity and position
 	if (!gameFinished) {
@@ -388,6 +390,7 @@ void Player::shootSmokebomb(sf::Vector2u &size, sf::Vector2f &velocity, sf::Vect
 void Player::takeDamage(int amount, const sf::Time &deltaTime) {
 	if(!isInvincible) {
 		score -= minimumNum(damageScoreDeduction * amount, currentHealth);
+		if (score < 0) score = 0;
 		currentHealth -= amount;
 		isInvincible = true;
 		currentInvincibilityTime = sf::milliseconds(0);

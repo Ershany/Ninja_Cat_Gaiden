@@ -3,7 +3,7 @@
 #include <iostream>
 
 GamestateManager::GamestateManager() {
-
+	
 }
 
 GamestateManager::GamestateManager(Gamestate *gameStart) {

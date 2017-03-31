@@ -248,6 +248,7 @@ void View::checkForTransition() {
 			model->initLevel2();
 		}
 		else if (model->player->currentLevel == 2) {
+			std::cout << "Ran" << std::endl;
 			// Tilemap, Camera, new state
 			delete gsm.getCurrentState();
 			Tilemap *tilemap = new Tilemap("Resources/Levels/level3.png", textureManager, window);
